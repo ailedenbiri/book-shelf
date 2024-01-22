@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class BookController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -12,7 +12,7 @@ public class BookController : MonoBehaviour
 
     private void Update()
     {
-        // Mouse sol týklandýðýnda
+        
         if (Input.GetMouseButtonDown(0))
         {
           
@@ -27,6 +27,14 @@ public class BookController : MonoBehaviour
 
                 hit.transform.DOMoveY(0.44f, 1f);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("shelfTrigger"))
+        {
+            Debug.Log("temasvar1");
         }
     }
 }
