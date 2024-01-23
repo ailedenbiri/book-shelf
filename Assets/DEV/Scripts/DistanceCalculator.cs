@@ -4,34 +4,30 @@ using UnityEngine;
 
 public class DistanceCalculator : MonoBehaviour
 {
-    [SerializeField] public float shelfLength = 20f; 
-    [SerializeField] public float[] bookThickness; 
+    public static DistanceCalculator instance;
+    [SerializeField] public int shelfLength = 10;
 
-    void Start()
+    private void Awake()
     {
-        calculateLength();
+        instance = this;
     }
-
-    void calculateLength()
+    public void AddToLength(int bookThickness)
     {
-        float kalanMesafe = shelfLength;
 
-        
-        foreach (float kalýnlýk in bookThickness)
+        if(shelfLength-bookThickness>0)
         {
-            kalanMesafe -= kalýnlýk;
+            shelfLength -= bookThickness;
+            Debug.Log("Remaining shelf length: " + shelfLength);
         }
-
-        
-        Debug.Log("Rafta kalan mesafe: " + kalanMesafe + " cm");
+        else if (shelfLength - bookThickness == 0) { Debug.Log("Shelf fit perfectly"); }
+        else { Debug.Log("Doesn't fit"); }
     }
 
-    void OnTriggerEnter(Collider other)
+    public void OofTheShelf(int bookThickness)
     {
-        if(other.CompareTag("book"))
-        {
-            Debug.Log("temasvar");
-        }
+        shelfLength += bookThickness;
+        Debug.Log("Remaining shelf length: " + shelfLength);
     }
+
 
 }
