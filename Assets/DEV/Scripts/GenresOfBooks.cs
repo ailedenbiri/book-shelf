@@ -4,12 +4,13 @@ using UnityEngine;
 
 
     public enum Genre {Love, Harror, Cowboy,Education};
-    public enum ColorOfBooks { Red, Green, Blue };
+    public enum ColorOfBook { Red, Green, Blue };
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/BookSettings")]
 public class BookSettingsScriptableObject : ScriptableObject
 {
     public Genre Genre;
-    public ColorOfBooks ColorOfBooks;
+    public ColorOfBook ColorOfBook;
+    public GameObject PrefabOfBook;
 }
