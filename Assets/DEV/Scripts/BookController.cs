@@ -5,6 +5,8 @@ using DG.Tweening;
 public class BookController : MonoBehaviour
 {
     [SerializeField] private List<Transform> books;
+    [SerializeField] private ParticleSystem particleEffect;
+
 
     private Transform selectedBook;
     private bool moved = false;
@@ -16,6 +18,11 @@ public class BookController : MonoBehaviour
         foreach (Transform book in books)
         {
             originalPositions[book] = book.position;
+        }
+
+        if (particleEffect != null)
+        {
+            particleEffect.Stop();
         }
     }
 
@@ -43,6 +50,8 @@ public class BookController : MonoBehaviour
                     {
                         ReturnToOriginalPosition(selectedBook);
                         moved = false;
+
+                       
                     }
                 }
                 else if (hit.collider.CompareTag("Respawn") && selectedBook != null)
@@ -68,10 +77,14 @@ public class BookController : MonoBehaviour
 
     private void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
     {
+
         bookTransform.DOKill();
+        Transform temp = bookTransform;
 
         bookTransform.DOMove(targetPosition + new Vector3(0f, 0.44f, 0f), 1f).SetEase(Ease.OutQuad);
-        bookTransform.DORotate(new Vector3(-90f, 0f, -90f), 1f).SetEase(Ease.OutQuad);
+        bookTransform.DORotate(new Vector3(-90f, 0f, -90f), 1f).SetEase(Ease.OutQuad).OnComplete(() => PlayParticleEffect(temp.position));
+
+
     }
 
     private void ReturnToOriginalPosition(Transform bookTransform)
@@ -80,6 +93,29 @@ public class BookController : MonoBehaviour
 
         bookTransform.DOMove(originalPositions[bookTransform], 1f).SetEase(Ease.OutQuad);
         bookTransform.DORotate(Vector3.zero, 1f).SetEase(Ease.OutQuad);
+    }
+
+    private void PlayParticleEffect(Vector3 position)
+    {
+        
+        if (particleEffect != null)
+        {
+            particleEffect.transform.position = position;
+            particleEffect.Play();
+
+            StartCoroutine(StopParticleEffectAfterDelay(particleEffect.main.duration));
+        }
+    }
+
+    private IEnumerator StopParticleEffectAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(1f);
+
+       
+        if (particleEffect != null)
+        {
+            particleEffect.Stop();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
