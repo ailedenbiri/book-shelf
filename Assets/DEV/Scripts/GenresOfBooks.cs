@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenresOfBooks : MonoBehaviour
+
+    public enum Genre {Love, Harror, Cowboy,Education};
+    public enum ColorOfBooks { Red, Green, Blue };
+
+
+[CreateAssetMenu(menuName = "ScriptableObjects/BookSettings")]
+public class BookSettingsScriptableObject : ScriptableObject
 {
-   
-   public enum Genres {Love, Harror, Cowboy,Education};
-    public enum Color { Red, Green, Blue };
-
-    void Start()
-    {
-        
-    }
-
-   
+    public Genre Genre;
+    public ColorOfBooks ColorOfBooks;
 }
