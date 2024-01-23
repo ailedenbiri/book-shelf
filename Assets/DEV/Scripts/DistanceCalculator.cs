@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -7,10 +8,15 @@ public class DistanceCalculator : MonoBehaviour
 {
     public static DistanceCalculator instance;
     [SerializeField] public int shelfLength = 10;
-
+    [SerializeField] public BookSettingsScriptableObject bookSettings;
+    [SerializeField] public Vector3 currentPos;
+    [SerializeField] public Book[] addedBooks;
+    [SerializeField] public float sizeCoefficient;
+    private bool added;
     private void Awake()
     {
         instance = this;
+        added = false;
     }
     public void AddToLength(int bookThickness)
     {
@@ -19,32 +25,52 @@ public class DistanceCalculator : MonoBehaviour
         {
             shelfLength -= bookThickness;
             Debug.Log("Remaining shelf length: " + shelfLength);
+            added = true;
         }
-        else if (shelfLength - bookThickness == 0) { Debug.Log("Shelf fit perfectly"); }
-        else { Debug.Log("Doesn't fit"); }
+        else if (shelfLength - bookThickness == 0) 
+        {
+            added = true; 
+            Debug.Log("Shelf fit perfectly"); 
+        }
+        else
+        {
+            added = false;
+            Debug.Log("Doesn't fit"); 
+        }
     }
 
-    public void OofTheShelf(int bookThickness)
-    {
-        shelfLength += bookThickness;
-        Debug.Log("Remaining shelf length: " + shelfLength);
-    }
 
-    public Vector3 AddPositionCalculate(Vector3 currentPos, float beforeObjectSize, float afterObjectSize)
+    public Vector3 AddPositionCalculate(Book book)
     {
-        currentPos.x+= (beforeObjectSize+afterObjectSize)/2;
-
+        if (addedBooks.Length == 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
+        {
+            AddToLength(book.thickness);
+            Debug.Log("Again same position");
+            if (added == true)
+            {
+                addedBooks[addedBooks.Length - 1] = book;
+                added = false;
+                
+            }
+            return currentPos; 
+            
+        }
+        else if(addedBooks.Length !=0  && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook) 
+        {
+            
+            AddToLength(book.thickness);
+            if(added == true)
+            {
+                currentPos.x += (addedBooks[addedBooks.Length - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
+                addedBooks[addedBooks.Length - 1] = book;
+                Debug.Log("Added new position");
+                added = false;
+                
+            }
+            return currentPos; 
+        }
         return currentPos;
 
     }
-
-    public Vector3 OofPositionCalculate(Vector3 currentPos, float beforeObjectSize, float afterObjectSize)
-    {
-        currentPos.x -= (beforeObjectSize + afterObjectSize)/2;
-
-        return currentPos;
-
-    }
-
 
 }
