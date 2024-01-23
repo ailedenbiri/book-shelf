@@ -4,7 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class BookController : MonoBehaviour
 {
-    
+    [SerializeField] private List<Transform> books;
+
     void Start()
     {
         
@@ -22,10 +23,15 @@ public class BookController : MonoBehaviour
            
             if (Physics.Raycast(ray, out hit))
             {
-                
-                hit.transform.DORotate(new Vector3(-90f, 0f, 0f), 1f);
+                var sequence = DOTween.Sequence();
+                foreach(Transform books in books)
+                {
+                    hit.transform.DORotate(new Vector3(-90f, 0f, 0f), 1f);
 
-                hit.transform.DOMoveY(0.44f, 1f);
+                    hit.transform.DOMoveY(0.44f, 1f);
+                }
+                
+               
             }
         }
     }
