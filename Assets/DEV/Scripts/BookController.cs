@@ -6,34 +6,80 @@ public class BookController : MonoBehaviour
 {
     [SerializeField] private List<Transform> books;
 
-    void Start()
+    private Transform selectedBook;
+    private bool moved = false;
+
+    private Dictionary<Transform, Vector3> originalPositions = new Dictionary<Transform, Vector3>();
+
+    private void Start()
     {
-        
+        foreach (Transform book in books)
+        {
+            originalPositions[book] = book.position;
+        }
     }
+
+
 
     private void Update()
     {
-        
         if (Input.GetMouseButtonDown(0))
         {
-          
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-           
             if (Physics.Raycast(ray, out hit))
             {
-                var sequence = DOTween.Sequence();
-                foreach(Transform books in books)
+                if (books.Contains(hit.transform))
                 {
-                    hit.transform.DORotate(new Vector3(-90f, 0f, 0f), 1f);
+                    selectedBook = hit.transform;
 
-                    hit.transform.DOMoveY(0.44f, 1f);
+                    if (!moved)
+                    {
+                        PlayBookAnimation(selectedBook);
+                        moved = true;
+                    }
+                    else
+                    {
+                        ReturnToOriginalPosition(selectedBook);
+                        moved = false;
+                    }
                 }
-                
-               
+                else if (hit.collider.CompareTag("Respawn") && selectedBook != null)
+                {
+                    PlaceBookOnShelf(selectedBook, hit.point);
+                    selectedBook = null;
+                    moved = false;
+                }
             }
         }
+    }
+
+       
+    private void PlayBookAnimation(Transform bookTransform)
+    {
+        bookTransform.DOKill();
+
+        bookTransform.DORotate(new Vector3(-90f, 0f, 0f), 1f);
+        bookTransform.DOMoveX(0.10f, 0.5f);
+        bookTransform.DOMoveY(0.5f,0.5f);
+        bookTransform.DOMoveZ(0f, 0.5f);
+    }
+
+    private void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
+    {
+        bookTransform.DOKill();
+
+        bookTransform.DOMove(targetPosition + new Vector3(0f, 0.44f, 0f), 1f).SetEase(Ease.OutQuad);
+        bookTransform.DORotate(new Vector3(-90f, 0f, -90f), 1f).SetEase(Ease.OutQuad);
+    }
+
+    private void ReturnToOriginalPosition(Transform bookTransform)
+    {
+        bookTransform.DOKill();
+
+        bookTransform.DOMove(originalPositions[bookTransform], 1f).SetEase(Ease.OutQuad);
+        bookTransform.DORotate(Vector3.zero, 1f).SetEase(Ease.OutQuad);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,5 +88,8 @@ public class BookController : MonoBehaviour
         {
             Debug.Log("temasvar1");
         }
+        
     }
+
+   
 }
