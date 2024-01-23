@@ -5,8 +5,8 @@ using UnityEngine;
 public class GenresOfBooks : MonoBehaviour
 {
    
-    enum Genres {Love, Harror, Cowboy,Education}
-    enum Color { Red, Green, Blue }
+   public enum Genres {Love, Harror, Cowboy,Education};
+    public enum Color { Red, Green, Blue };
 
     void Start()
     {
