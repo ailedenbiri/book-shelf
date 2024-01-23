@@ -10,7 +10,7 @@ public class DistanceCalculator : MonoBehaviour
     [SerializeField] public int shelfLength = 10;
     [SerializeField] public BookSettingsScriptableObject bookSettings;
     [SerializeField] public Vector3 currentPos;
-    [SerializeField] public Book[] addedBooks;
+    List<Book> addedBooks = new List<Book>();
     [SerializeField] public float sizeCoefficient;
     private bool added;
     private void Awake()
@@ -42,27 +42,27 @@ public class DistanceCalculator : MonoBehaviour
 
     public Vector3 AddPositionCalculate(Book book)
     {
-        if (addedBooks.Length == 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
+        if (addedBooks.Count == 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
         {
             AddToLength(book.thickness);
             Debug.Log("Again same position");
             if (added == true)
             {
-                addedBooks[addedBooks.Length - 1] = book;
+                addedBooks[addedBooks.Count - 1] = book;
                 added = false;
                 
             }
             return currentPos; 
             
         }
-        else if(addedBooks.Length !=0  && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook) 
+        else if(addedBooks.Count !=0  && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook) 
         {
             
             AddToLength(book.thickness);
             if(added == true)
             {
-                currentPos.x += (addedBooks[addedBooks.Length - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
-                addedBooks[addedBooks.Length - 1] = book;
+                currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
+                addedBooks[addedBooks.Count - 1] = book;
                 Debug.Log("Added new position");
                 added = false;
                 
