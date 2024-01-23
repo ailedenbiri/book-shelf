@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DistanceCalculator : MonoBehaviour
 {
@@ -27,6 +28,22 @@ public class DistanceCalculator : MonoBehaviour
     {
         shelfLength += bookThickness;
         Debug.Log("Remaining shelf length: " + shelfLength);
+    }
+
+    public Vector3 AddPositionCalculate(Vector3 currentPos, float beforeObjectSize, float afterObjectSize)
+    {
+        currentPos.x+= (beforeObjectSize+afterObjectSize)/2;
+
+        return currentPos;
+
+    }
+
+    public Vector3 OofPositionCalculate(Vector3 currentPos, float beforeObjectSize, float afterObjectSize)
+    {
+        currentPos.x -= (beforeObjectSize + afterObjectSize)/2;
+
+        return currentPos;
+
     }
 
 
