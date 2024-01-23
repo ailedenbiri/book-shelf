@@ -4,21 +4,18 @@ using UnityEngine;
 using DG.Tweening;
 public class BookController : MonoBehaviour
 {
-    [SerializeField] private List<Transform> books;
+    private Transform book;
     [SerializeField] private ParticleSystem particleEffect;
 
 
     private Transform selectedBook;
     private bool moved = false;
 
-    private Dictionary<Transform, Vector3> originalPositions = new Dictionary<Transform, Vector3>();
+    
 
     private void Start()
     {
-        foreach (Transform book in books)
-        {
-            originalPositions[book] = book.position;
-        }
+      
 
         if (particleEffect != null)
         {
@@ -37,7 +34,7 @@ public class BookController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (books.Contains(hit.transform))
+                if (hit.transform.TryGetComponent(out Book bookTransform))
                 {
                     selectedBook = hit.transform;
 
@@ -91,7 +88,7 @@ public class BookController : MonoBehaviour
     {
         bookTransform.DOKill();
 
-        bookTransform.DOMove(originalPositions[bookTransform], 1f).SetEase(Ease.OutQuad);
+        bookTransform.DOMove(bookTransform.GetComponent<Book>().startPos, 1f).SetEase(Ease.OutQuad);
         bookTransform.DORotate(Vector3.zero, 1f).SetEase(Ease.OutQuad);
     }
 
