@@ -4,18 +4,27 @@ using UnityEngine;
 using DG.Tweening;
 public class BookController : MonoBehaviour
 {
+    public static BookController instance;
+
     private Transform book;
     [SerializeField] private ParticleSystem particleEffect;
 
 
-    private Book selectedBook;
+    public Book selectedBook;
     private bool moved = false;
 
-    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
 
     private void Start()
     {
-      
+
 
         if (particleEffect != null)
         {
@@ -36,26 +45,26 @@ public class BookController : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Book bookTransform))
                 {
-                    selectedBook = bookTransform; 
-
-                    if (!moved)
-                    {
-                        PlayBookAnimation(selectedBook.transform);
-                        moved = true;
-                    }
-                    else
+                    if (selectedBook != null)
                     {
                         ReturnToOriginalPosition(selectedBook.transform);
-                        moved = false;
-
-                       
                     }
+                    if (bookTransform.placed)
+                    {
+                        return;
+                    }
+
+                    selectedBook = bookTransform;
+
+                    PlayBookAnimation(selectedBook.transform);
                 }
-               
+
                 else if (hit.collider.CompareTag("Respawn") && selectedBook != null)
                 {
-                   Vector3 bookPoint = hit.collider.GetComponentInParent<DistanceCalculator>().AddPositionCalculate(selectedBook);
+                    Vector3 bookPoint = hit.collider.GetComponentInParent<DistanceCalculator>().AddPositionCalculate(selectedBook);
                     PlaceBookOnShelf(selectedBook.transform, bookPoint);
+                    selectedBook.placed = true;
+                    selectedBook.GetComponent<Collider>().enabled = false;
                     selectedBook = null;
                     moved = false;
                 }
@@ -63,20 +72,20 @@ public class BookController : MonoBehaviour
         }
     }
 
-       
+
     private void PlayBookAnimation(Transform bookTransform)
     {
         bookTransform.DOKill();
 
         bookTransform.DORotate(new Vector3(-90f, 0f, 0f), 1f);
         bookTransform.DOMoveX(0.10f, 0.5f);
-        bookTransform.DOMoveY(0.5f,0.5f);
+        bookTransform.DOMoveY(0.5f, 0.5f);
         bookTransform.DOMoveZ(0f, 0.5f);
     }
 
     private void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
     {
-      
+
 
         bookTransform.DOKill();
         Transform temp = bookTransform;
@@ -86,7 +95,7 @@ public class BookController : MonoBehaviour
 
     }
 
-    private void ReturnToOriginalPosition(Transform bookTransform)
+    public void ReturnToOriginalPosition(Transform bookTransform)
     {
         bookTransform.DOKill();
 
@@ -96,7 +105,7 @@ public class BookController : MonoBehaviour
 
     private void PlayParticleEffect(Vector3 position)
     {
-        
+
         if (particleEffect != null)
         {
             particleEffect.transform.position = position;
@@ -110,12 +119,12 @@ public class BookController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-       
+
         if (particleEffect != null)
         {
             particleEffect.Stop();
         }
     }
 
-   
+
 }

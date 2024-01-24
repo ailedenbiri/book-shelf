@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.11989295, y: 0.60724974, z: -4.5585985}
-  m_LocalScale: {x: 0.8, y: 0.2, z: 1.2}
+  m_LocalScale: {x: 0.8, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -121,3 +121,4 @@ MonoBehaviour:
   Genre: 0
   ColorOfBook: 0
   thickness: 2
+  startPos: {x: 0, y: 0, z: 0}

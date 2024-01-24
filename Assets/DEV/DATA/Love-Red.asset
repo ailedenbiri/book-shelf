@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32dd94227267077498516d55de0ce756, type: 3}
-  m_Name: Book1
+  m_Name: Love-Red
   m_EditorClassIdentifier: 
   Genre: 0
   ColorOfBook: 0

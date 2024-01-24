@@ -8,6 +8,8 @@ public class Book : MonoBehaviour
    public ColorOfBook ColorOfBook;
    public int thickness;
 
+    public bool placed;
+
 
     public Vector3 startPos;
 

@@ -1,6 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -18,24 +21,29 @@ public class DistanceCalculator : MonoBehaviour
         instance = this;
         added = false;
     }
+
+    private void Start()
+    {
+        currentPos = transform.GetChild(0).position;
+    }
     public void AddToLength(int bookThickness)
     {
 
-        if(shelfLength-bookThickness>0)
+        if (shelfLength - bookThickness > 0)
         {
             shelfLength -= bookThickness;
             Debug.Log("Remaining shelf length: " + shelfLength);
             added = true;
         }
-        else if (shelfLength - bookThickness == 0) 
+        else if (shelfLength - bookThickness == 0)
         {
-            added = true; 
-            Debug.Log("Shelf fit perfectly"); 
+            added = true;
+            Debug.Log("Shelf fit perfectly");
         }
         else
         {
             added = false;
-            Debug.Log("Doesn't fit"); 
+            Debug.Log("Doesn't fit");
         }
     }
 
@@ -50,32 +58,41 @@ public class DistanceCalculator : MonoBehaviour
             {
                 addedBooks.Add(book);
                 added = false;
-                
+
             }
-            return currentPos; 
-            
+            return currentPos;
+
         }
-        else if(addedBooks.Count !=0  && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook) 
+        else if (addedBooks.Count != 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
         {
-            
+
             AddToLength(book.thickness);
-            if(added == true)
+            if (added == true)
             {
                 currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
                 addedBooks.Add(book);
                 Debug.Log("Added new position");
                 added = false;
-                
+
             }
-            return currentPos; 
+            return currentPos;
         }
         else
         {
             //Wrong shelf!!!
             Debug.Log("Wrong Shelf!!");
+            Transform tempBook = book.transform;
+            DOVirtual.DelayedCall(1.5f, () =>
+            {
+                tempBook.DOKill();
+                BookController.instance.ReturnToOriginalPosition(tempBook);
+                tempBook.GetComponent<Book>().placed = false;
+                tempBook.GetComponent<Collider>().enabled = true;
+                GameManager.instance.Vibrate();
+            });
             return currentPos;
         }
-        
+
 
     }
 
