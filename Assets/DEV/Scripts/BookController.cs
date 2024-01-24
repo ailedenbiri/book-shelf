@@ -47,6 +47,7 @@ public class BookController : MonoBehaviour
                 {
                     if (selectedBook != null)
                     {
+                       
                         ReturnToOriginalPosition(selectedBook.transform);
                     }
                     if (bookTransform.placed)

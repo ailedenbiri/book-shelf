@@ -1,4 +1,5 @@
 using DG.Tweening;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,21 +80,48 @@ public class DistanceCalculator : MonoBehaviour
         }
         else
         {
-            //Wrong shelf!!!
-            Debug.Log("Wrong Shelf!!");
-            Transform tempBook = book.transform;
-            DOVirtual.DelayedCall(1.5f, () =>
+            if(addedBooks.Count == 0)
             {
-                tempBook.DOKill();
-                BookController.instance.ReturnToOriginalPosition(tempBook);
-                tempBook.GetComponent<Book>().placed = false;
-                tempBook.GetComponent<Collider>().enabled = true;
-                GameManager.instance.Vibrate();
-            });
-            return currentPos;
+                Transform tempBook = book.transform;
+                DOVirtual.DelayedCall(1.5f, () =>
+                {
+                    tempBook.DOKill();
+                    BookController.instance.ReturnToOriginalPosition(tempBook);
+                    tempBook.GetComponent<Book>().placed = false;
+                    tempBook.GetComponent<Collider>().enabled = true;
+                    GameManager.instance.Vibrate();
+                    WrongShelfPosCalculate(book);
+                });
+                return currentPos;
+            }
+            else
+            {
+                //Wrong shelf!!!
+                Debug.Log("Wrong Shelf!!");
+                currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
+                Transform tempBook = book.transform;
+                DOVirtual.DelayedCall(1.5f, () =>
+                {
+                    tempBook.DOKill();
+                    BookController.instance.ReturnToOriginalPosition(tempBook);
+                    tempBook.GetComponent<Book>().placed = false;
+                    tempBook.GetComponent<Collider>().enabled = true;
+                    GameManager.instance.Vibrate();
+                    WrongShelfPosCalculate(book);
+                });
+                return currentPos;
+            }
+            
+            
         }
 
-
+        
     }
+    public void WrongShelfPosCalculate(Book book)
+    {
+        currentPos.x -= (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
+        
+    }
+
 
 }
