@@ -48,7 +48,7 @@ public class DistanceCalculator : MonoBehaviour
             Debug.Log("Again same position");
             if (added == true)
             {
-                addedBooks[addedBooks.Count - 1] = book;
+                addedBooks.Add(book);
                 added = false;
                 
             }
@@ -62,14 +62,20 @@ public class DistanceCalculator : MonoBehaviour
             if(added == true)
             {
                 currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
-                addedBooks[addedBooks.Count - 1] = book;
+                addedBooks.Add(book);
                 Debug.Log("Added new position");
                 added = false;
                 
             }
             return currentPos; 
         }
-        return currentPos;
+        else
+        {
+            //Wrong shelf!!!
+            Debug.Log("Wrong Shelf!!");
+            return currentPos;
+        }
+        
 
     }
 
