@@ -83,6 +83,7 @@ public class DistanceCalculator : MonoBehaviour
             if(addedBooks.Count == 0)
             {
                 Transform tempBook = book.transform;
+               
                 DOVirtual.DelayedCall(1.5f, () =>
                 {
                     tempBook.DOKill();
@@ -111,11 +112,9 @@ public class DistanceCalculator : MonoBehaviour
                 });
                 return currentPos;
             }
-            
-            
+          
         }
 
-        
     }
     public void WrongShelfPosCalculate(Book book)
     {
