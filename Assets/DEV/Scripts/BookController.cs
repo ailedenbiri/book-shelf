@@ -115,6 +115,7 @@ public class BookController : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("shelfTrigger"))
@@ -123,6 +124,6 @@ public class BookController : MonoBehaviour
         }
         
     }
-
+    */
    
 }
