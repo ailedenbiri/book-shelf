@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-    public enum Genre {Love, Harror, Cowboy,Education};
+    public enum Genre {Love,Harror,Cowboy,Education,Noir,Health,SelfImprovement, ChildBook,Fantasy};
     public enum ColorOfBook { Red, Green, Blue };
 
 

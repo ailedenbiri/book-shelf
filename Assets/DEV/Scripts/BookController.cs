@@ -8,7 +8,7 @@ public class BookController : MonoBehaviour
     [SerializeField] private ParticleSystem particleEffect;
 
 
-    private Transform selectedBook;
+    private Book selectedBook;
     private bool moved = false;
 
     
@@ -36,24 +36,26 @@ public class BookController : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out Book bookTransform))
                 {
-                    selectedBook = hit.transform;
+                    selectedBook = bookTransform; 
 
                     if (!moved)
                     {
-                        PlayBookAnimation(selectedBook);
+                        PlayBookAnimation(selectedBook.transform);
                         moved = true;
                     }
                     else
                     {
-                        ReturnToOriginalPosition(selectedBook);
+                        ReturnToOriginalPosition(selectedBook.transform);
                         moved = false;
 
                        
                     }
                 }
+               
                 else if (hit.collider.CompareTag("Respawn") && selectedBook != null)
                 {
-                    PlaceBookOnShelf(selectedBook, hit.point);
+                   Vector3 bookPoint = hit.collider.GetComponentInParent<DistanceCalculator>().AddPositionCalculate(selectedBook);
+                    PlaceBookOnShelf(selectedBook.transform, bookPoint);
                     selectedBook = null;
                     moved = false;
                 }
@@ -74,10 +76,10 @@ public class BookController : MonoBehaviour
 
     private void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
     {
+      
 
         bookTransform.DOKill();
         Transform temp = bookTransform;
-
         bookTransform.DOMove(targetPosition + new Vector3(0f, 0.44f, 0f), 1f).SetEase(Ease.OutQuad);
         bookTransform.DORotate(new Vector3(-90f, 0f, -90f), 1f).SetEase(Ease.OutQuad).OnComplete(() => PlayParticleEffect(temp.position));
 
@@ -115,15 +117,5 @@ public class BookController : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("shelfTrigger"))
-        {
-            Debug.Log("temasvar1");
-        }
-        
-    }
-    */
    
 }
