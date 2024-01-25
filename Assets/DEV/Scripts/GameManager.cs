@@ -6,8 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] public int health;
-
+    [SerializeField] private int health=3;
+    [SerializeField] private List<GameObject> bookObjects = new List<GameObject>();
+    
     private void Awake()
     {
         instance = this;
@@ -16,7 +17,30 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        health = 3;
+        allBooksOnScene();
+        
+    }
+
+    public void reduceBooks()
+    {
+        bookObjects.RemoveAt(bookObjects.Count - 1);
+        if(bookObjects.Count == 0 )
+        {
+            LevelCompleted();
+        }
+    }
+
+    private void allBooksOnScene()
+    {
+        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.CompareTag("book"))
+            {
+                bookObjects.Add(obj);
+            }
+        }
     }
     public void WrongShelf()
     {
@@ -35,6 +59,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Something is wrong!!!");
         }
+    }
+
+    public void LevelCompleted()
+    {
+        Debug.Log("Congratulations!!!");
     }
     public void GameOver()
     {
