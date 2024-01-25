@@ -31,19 +31,17 @@ public class DistanceCalculator : MonoBehaviour
     }
     public void AddToLength(int bookThickness)
     {
-
+        GameManager.instance.CountBooks();
         if (shelfLength - bookThickness > 0)
         {
             shelfLength -= bookThickness;
             Debug.Log("Remaining shelf length: " + shelfLength);
-            GameManager.instance.reduceBooks();
             added = true;
         }
         else if (shelfLength - bookThickness == 0)
         {
             added = true;
             Debug.Log("Shelf fit perfectly");
-            GameManager.instance.reduceBooks();
            
         }
         else

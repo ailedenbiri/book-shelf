@@ -47,8 +47,18 @@ public class BookController : MonoBehaviour
                 {
                     if (selectedBook != null)
                     {
-                       
-                        ReturnToOriginalPosition(selectedBook.transform);
+                        if (selectedBook == bookTransform)
+                        {
+                            ReturnToOriginalPosition(selectedBook.transform, true);
+                        }
+                        else
+                        {
+                            ReturnToOriginalPosition(selectedBook.transform);
+                        }
+                    }
+                    else
+                    {
+                        GameManager.instance.LockBooks();
                     }
                     if (bookTransform.placed)
                     {
@@ -56,7 +66,6 @@ public class BookController : MonoBehaviour
                     }
 
                     selectedBook = bookTransform;
-
                     PlayBookAnimation(selectedBook.transform);
                 }
 
@@ -65,6 +74,7 @@ public class BookController : MonoBehaviour
                     Vector3 bookPoint = hit.collider.GetComponentInParent<DistanceCalculator>().AddPositionCalculate(selectedBook);
                     PlaceBookOnShelf(selectedBook.transform, bookPoint);
                     selectedBook.placed = true;
+                    GameManager.instance.UnlockBooks();
                     selectedBook.GetComponent<Collider>().enabled = false;
                     selectedBook = null;
                     moved = false;
@@ -77,8 +87,9 @@ public class BookController : MonoBehaviour
     private void PlayBookAnimation(Transform bookTransform)
     {
         bookTransform.DOKill();
+        bookTransform.GetComponent<Book>().UpdatePositions();
 
-        bookTransform.DORotate(new Vector3(-90f, 0f, 0f), 1f);
+        bookTransform.DORotate(new Vector3(0f, -90f, 0f), 1f);
         bookTransform.DOMoveX(0.10f, 0.5f);
         bookTransform.DOMoveY(0.5f, 0.5f);
         bookTransform.DOMoveZ(0f, 0.5f);
@@ -90,18 +101,26 @@ public class BookController : MonoBehaviour
 
         bookTransform.DOKill();
         Transform temp = bookTransform;
-        bookTransform.DOMove(targetPosition + new Vector3(0f, 0.44f, 0f), 1f).SetEase(Ease.OutQuad);
-        bookTransform.DORotate(new Vector3(-90f, 0f, -90f), 1f).SetEase(Ease.OutQuad).OnComplete(() => PlayParticleEffect(temp.position));
+        bookTransform.DOMove(targetPosition, 1f).SetEase(Ease.OutQuad);
+        bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1f).SetEase(Ease.OutQuad).OnComplete(() => PlayParticleEffect(temp.position));
 
 
     }
 
-    public void ReturnToOriginalPosition(Transform bookTransform)
+    public void ReturnToOriginalPosition(Transform bookTransform, bool unlockBooks = false)
     {
         bookTransform.DOKill();
 
         bookTransform.DOMove(bookTransform.GetComponent<Book>().startPos, 1f).SetEase(Ease.OutQuad);
-        bookTransform.DORotate(Vector3.zero, 1f).SetEase(Ease.OutQuad);
+        bookTransform.DORotateQuaternion(bookTransform.GetComponent<Book>().startRot, 1f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            if (unlockBooks)
+            {
+                GameManager.instance.UnlockBooks();
+            }
+        });
+
+
     }
 
     private void PlayParticleEffect(Vector3 position)

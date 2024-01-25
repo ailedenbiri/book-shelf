@@ -6,41 +6,36 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] private int health=3;
-    [SerializeField] private List<GameObject> bookObjects = new List<GameObject>();
-    
+    [SerializeField] private int health = 3;
+    [SerializeField] private List<Book> bookObjects = new List<Book>();
+
     private void Awake()
     {
         instance = this;
-        
     }
 
     private void Start()
     {
-        allBooksOnScene();
-        
+        GetAllBooksInScene();
     }
 
-    public void reduceBooks()
+    public bool CountBooks()
     {
-        bookObjects.RemoveAt(bookObjects.Count - 1);
-        if(bookObjects.Count == 0 )
+        int temp = bookObjects.Count;
+        int counter = 0;
+        foreach (var item in bookObjects)
         {
-            LevelCompleted();
-        }
-    }
-
-    private void allBooksOnScene()
-    {
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-
-        foreach (GameObject obj in allObjects)
-        {
-            if (obj.CompareTag("book"))
+            if (item.placed)
             {
-                bookObjects.Add(obj);
+                counter++;
             }
         }
+        return counter == temp;
+    }
+
+    private void GetAllBooksInScene()
+    {
+        bookObjects = new List<Book>(GameObject.FindObjectsOfType<Book>());
     }
     public void WrongShelf()
     {
@@ -58,6 +53,28 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Something is wrong!!!");
+        }
+    }
+
+    public void LockBooks()
+    {
+        foreach (var item in bookObjects)
+        {
+            if (!item.placed)
+            {
+                item.GetComponent<Rigidbody>().isKinematic = true;
+            }
+        }
+    }
+
+    public void UnlockBooks()
+    {
+        foreach (var item in bookObjects)
+        {
+            if (!item.placed)
+            {
+                item.GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
     }
 
@@ -93,14 +110,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
 
 
 
 
 
 
-    
+
+
 
 
 
