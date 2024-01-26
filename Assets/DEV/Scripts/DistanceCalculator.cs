@@ -17,12 +17,12 @@ public class DistanceCalculator : MonoBehaviour
     List<Book> addedBooks = new List<Book>();
     [SerializeField] public float sizeCoefficient;
     private bool added;
-    
+
     private void Awake()
     {
         instance = this;
         added = false;
-        
+
     }
 
     private void Start()
@@ -42,7 +42,7 @@ public class DistanceCalculator : MonoBehaviour
         {
             added = true;
             Debug.Log("Shelf fit perfectly");
-           
+
         }
         else
         {
@@ -58,12 +58,14 @@ public class DistanceCalculator : MonoBehaviour
         {
             AddToLength(book.thickness);
             Debug.Log("Again same position");
+            DOVirtual.DelayedCall(1f, () => { GameManager.instance.UnlockBooks(); });
             if (added == true)
             {
                 addedBooks.Add(book);
                 added = false;
-
             }
+            BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
+            DOVirtual.DelayedCall(1f, () => GameManager.instance.state = GameManager.GameState.Playing);
             return currentPos;
 
         }
@@ -71,6 +73,8 @@ public class DistanceCalculator : MonoBehaviour
         {
 
             AddToLength(book.thickness);
+            DOVirtual.DelayedCall(1f, () => { GameManager.instance.UnlockBooks(); });
+
             if (added == true)
             {
                 currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
@@ -79,22 +83,23 @@ public class DistanceCalculator : MonoBehaviour
                 added = false;
 
             }
+            BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
+            DOVirtual.DelayedCall(1f, () => GameManager.instance.state = GameManager.GameState.Playing);
             return currentPos;
         }
         else
         {
-            if(addedBooks.Count == 0)
+            if (addedBooks.Count == 0)
             {
                 Transform tempBook = book.transform;
-               
+                BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
                 DOVirtual.DelayedCall(1.5f, () =>
                 {
                     tempBook.DOKill();
-                    BookController.instance.ReturnToOriginalPosition(tempBook);
+                    BookController.instance.ReturnToOriginalPosition(tempBook, true);
                     tempBook.GetComponent<Book>().placed = false;
                     tempBook.GetComponent<Collider>().enabled = true;
                     GameManager.instance.Vibrate();
-                    WrongShelfPosCalculate(book);
                 });
                 return currentPos;
             }
@@ -104,25 +109,27 @@ public class DistanceCalculator : MonoBehaviour
                 Debug.Log("Wrong Shelf!!");
                 currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
                 Transform tempBook = book.transform;
+                BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
                 DOVirtual.DelayedCall(1.5f, () =>
                 {
                     tempBook.DOKill();
-                    BookController.instance.ReturnToOriginalPosition(tempBook);
+                    BookController.instance.ReturnToOriginalPosition(tempBook, true);
                     tempBook.GetComponent<Book>().placed = false;
                     tempBook.GetComponent<Collider>().enabled = true;
                     GameManager.instance.Vibrate();
-                    WrongShelfPosCalculate(book);
+                    WrongShelfPosCalculate(tempBook.GetComponent<Book>());
                 });
                 return currentPos;
             }
-          
+
         }
 
     }
     public void WrongShelfPosCalculate(Book book)
     {
         currentPos.x -= (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
-        
+
+
     }
 
 

@@ -11,7 +11,6 @@ public class BookController : MonoBehaviour
 
 
     public Book selectedBook;
-    private bool moved = false;
 
     private void Awake()
     {
@@ -36,66 +35,77 @@ public class BookController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.instance.state == GameManager.GameState.Playing)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.transform.TryGetComponent(out Book bookTransform))
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if (selectedBook != null)
+                    if (hit.transform.TryGetComponent(out Book bookTransform))
                     {
-                        if (selectedBook == bookTransform)
+                        if (selectedBook != null)
                         {
-                            ReturnToOriginalPosition(selectedBook.transform, true);
+                            if (selectedBook == bookTransform)
+                            {
+                                GameManager.instance.state = GameManager.GameState.Waiting;
+                                ReturnToOriginalPosition(selectedBook.transform, true);
+                                selectedBook = null;
+                                return;
+                            }
+                            else
+                            {
+                                GameManager.instance.state = GameManager.GameState.Waiting;
+                                ReturnToOriginalPosition(selectedBook.transform);
+                            }
                         }
                         else
                         {
-                            ReturnToOriginalPosition(selectedBook.transform);
+                            GameManager.instance.LockBooks();
                         }
-                    }
-                    else
-                    {
-                        GameManager.instance.LockBooks();
-                    }
-                    if (bookTransform.placed)
-                    {
-                        return;
+                        if (bookTransform.placed)
+                        {
+                            return;
+                        }
+
+                        selectedBook = bookTransform;
+                        GameManager.instance.state = GameManager.GameState.Waiting;
+                        PlayBookAnimation(selectedBook.transform);
                     }
 
-                    selectedBook = bookTransform;
-                    PlayBookAnimation(selectedBook.transform);
-                }
-
-                else if (hit.collider.CompareTag("Respawn") && selectedBook != null)
-                {
-                    Vector3 bookPoint = hit.collider.GetComponentInParent<DistanceCalculator>().AddPositionCalculate(selectedBook);
-                    PlaceBookOnShelf(selectedBook.transform, bookPoint);
-                    selectedBook.placed = true;
-                    GameManager.instance.UnlockBooks();
-                    selectedBook.GetComponent<Collider>().enabled = false;
-                    selectedBook = null;
-                    moved = false;
+                    else if (hit.transform.TryGetComponent<DistanceCalculator>(out DistanceCalculator shelf) && selectedBook != null)
+                    {
+                        GameManager.instance.state = GameManager.GameState.Waiting;
+                        Vector3 bookPoint = shelf.AddPositionCalculate(selectedBook);
+                        selectedBook.placed = true;
+                        selectedBook.GetComponent<Collider>().enabled = false;
+                        selectedBook = null;
+                    }
                 }
             }
         }
+
     }
 
 
     private void PlayBookAnimation(Transform bookTransform)
     {
+
         bookTransform.DOKill();
         bookTransform.GetComponent<Book>().UpdatePositions();
 
-        bookTransform.DORotate(new Vector3(0f, -90f, 0f), 1f);
+        bookTransform.DORotate(new Vector3(0f, -90f, 0f), 0.5f);
         bookTransform.DOMoveX(0.10f, 0.5f);
         bookTransform.DOMoveY(0.5f, 0.5f);
-        bookTransform.DOMoveZ(0f, 0.5f);
+        bookTransform.DOMoveZ(0f, 0.5f).OnComplete(() =>
+        {
+            GameManager.instance.state = GameManager.GameState.Playing;
+        });
     }
 
-    private void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
+    public void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
     {
 
 
@@ -111,13 +121,14 @@ public class BookController : MonoBehaviour
     {
         bookTransform.DOKill();
 
-        bookTransform.DOMove(bookTransform.GetComponent<Book>().startPos, 1f).SetEase(Ease.OutQuad);
-        bookTransform.DORotateQuaternion(bookTransform.GetComponent<Book>().startRot, 1f).SetEase(Ease.OutQuad).OnComplete(() =>
+        bookTransform.DOMove(bookTransform.GetComponent<Book>().startPos, 0.5f).SetEase(Ease.OutQuad);
+        bookTransform.DORotateQuaternion(bookTransform.GetComponent<Book>().startRot, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             if (unlockBooks)
             {
                 GameManager.instance.UnlockBooks();
             }
+            GameManager.instance.state = GameManager.GameState.Playing;
         });
 
 

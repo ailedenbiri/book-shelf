@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int health = 3;
     [SerializeField] private List<Book> bookObjects = new List<Book>();
 
+    public enum GameState
+    {
+        Playing,
+        Waiting
+    }
+
+    public GameState state = GameState.Playing;
+
     private void Awake()
     {
         instance = this;
@@ -29,6 +37,10 @@ public class GameManager : MonoBehaviour
             {
                 counter++;
             }
+        }
+        if (counter == temp)
+        {
+            Debug.Log("Oyun bitti");
         }
         return counter == temp;
     }
