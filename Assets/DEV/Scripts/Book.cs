@@ -8,11 +8,11 @@ public class Book : MonoBehaviour
     public ColorOfBook ColorOfBook;
     public int thickness;
 
-    public bool placed;
+    [HideInInspector]public bool placed;
 
 
-    public Vector3 startPos;
-    public Quaternion startRot;
+    [HideInInspector]public Vector3 startPos;
+    [HideInInspector]public Quaternion startRot;
 
     public void UpdatePositions()
     {
