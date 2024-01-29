@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Genre { Love, Harror, Cowboy, Education, Noir, Health, SelfImprovement, ChildBook, Fantasy };
-public enum ColorOfBook { Red, Green, Blue };
+public enum Genre { Love, Cowboy, Education, Noir, Health, SelfImprovement, ChildBook, Fantasy };
+public enum ColorOfBook { Red, Purple, Blue };
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/BookSettings")]

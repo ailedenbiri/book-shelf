@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dd94227267077498516d55de0ce756, type: 3}
+  m_Name: Child - Purple
+  m_EditorClassIdentifier: 
+  Genre: 6
+  ColorOfBook: 1
+  PrefabOfBook:
+  - {fileID: 2677792870564268796, guid: 8702f308e150d454a9011e795e78c6a9, type: 3}

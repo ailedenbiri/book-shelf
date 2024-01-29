@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dd94227267077498516d55de0ce756, type: 3}
   m_Name: Education-Blue
   m_EditorClassIdentifier: 
-  Genre: 3
+  Genre: 2
   ColorOfBook: 2
   PrefabOfBook:
   - {fileID: 2677792870564268796, guid: 8702f308e150d454a9011e795e78c6a9, type: 3}
