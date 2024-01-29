@@ -7778,6 +7778,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fantasy - Red -2
       objectReference: {fileID: 0}
+    - target: {fileID: 6893197017817488115, guid: b75cd1732401ebe4c8811453ccc83170,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8369,6 +8374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fantasy - Red -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 702773423562727105, guid: d41b417db96bff440bf6dfdd60b5d847,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2173123371425964446, guid: d41b417db96bff440bf6dfdd60b5d847,
         type: 3}
@@ -9538,6 +9548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fantasy - Red -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017048942223913764, guid: cae818163f65733469c909decf998728,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656167195157837017, guid: cae818163f65733469c909decf998728,
         type: 3}
