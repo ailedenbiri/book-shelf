@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void Vibrate()
     {
-        Handheld.Vibrate();
+        Taptic.Medium();
     }
     public void StartMenu()
     {
