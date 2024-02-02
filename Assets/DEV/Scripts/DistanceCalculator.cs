@@ -51,12 +51,12 @@ public class DistanceCalculator : MonoBehaviour
         }
     }
 
-
     public Vector3 AddPositionCalculate(Book book)
     {
         if (addedBooks.Count == 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
         {
             AddToLength(book.thickness);
+            currentPos.x += book.thickness * 0.05f;
             Debug.Log("Again same position");
             DOVirtual.DelayedCall(1f, () => { GameManager.instance.UnlockBooks(); });
             if (added == true)
@@ -91,8 +91,11 @@ public class DistanceCalculator : MonoBehaviour
         {
             if (addedBooks.Count == 0)
             {
+                Vector3 tempPos = currentPos;
+                currentPos.x += book.thickness * 0.05f;
                 Transform tempBook = book.transform;
                 BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
+                currentPos = tempPos;
                 DOVirtual.DelayedCall(1.5f, () =>
                 {
                     tempBook.DOKill();
@@ -100,7 +103,9 @@ public class DistanceCalculator : MonoBehaviour
                     tempBook.GetComponent<Book>().placed = false;
                     tempBook.GetComponent<Collider>().enabled = true;
                     GameManager.instance.Vibrate();
+                    
                 });
+
                 return currentPos;
             }
             else
