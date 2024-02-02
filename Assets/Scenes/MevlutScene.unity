@@ -6393,6 +6393,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9d8c7a3ce7ddf0040821eb61a0d6f4c3,
         type: 2}
+    - target: {fileID: 1223483705999574979, guid: 4edac54802885fc4296e9bb9956e36b3,
+        type: 3}
+      propertyPath: sizeCoefficient
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6016108040667127583, guid: 4edac54802885fc4296e9bb9956e36b3,
         type: 3}
       propertyPath: m_Name
@@ -9739,7 +9744,7 @@ PrefabInstance:
     - target: {fileID: 3219868892432581216, guid: 4208042971e8afd4f839a6e67786935c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0445762
+      value: 0.295
       objectReference: {fileID: 0}
     - target: {fileID: 3219868892432581216, guid: 4208042971e8afd4f839a6e67786935c,
         type: 3}
@@ -9749,7 +9754,7 @@ PrefabInstance:
     - target: {fileID: 3219868892432581216, guid: 4208042971e8afd4f839a6e67786935c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.3483701
+      value: 4.058
       objectReference: {fileID: 0}
     - target: {fileID: 3219868892432581216, guid: 4208042971e8afd4f839a6e67786935c,
         type: 3}
@@ -9790,11 +9795,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cowboy - Red -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8189038124076371882, guid: 4208042971e8afd4f839a6e67786935c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10696,15 +10696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cowboy - Red -2
       objectReference: {fileID: 0}
-    - target: {fileID: 1086905026855559345, guid: ad136b1c99404024a88b90e8381aa38f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6161992407225193005, guid: ad136b1c99404024a88b90e8381aa38f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.06124
+      value: -0.72166383
       objectReference: {fileID: 0}
     - target: {fileID: 6161992407225193005, guid: ad136b1c99404024a88b90e8381aa38f,
         type: 3}
@@ -10714,7 +10709,7 @@ PrefabInstance:
     - target: {fileID: 6161992407225193005, guid: ad136b1c99404024a88b90e8381aa38f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8320713
+      value: 4.5417013
       objectReference: {fileID: 0}
     - target: {fileID: 6161992407225193005, guid: ad136b1c99404024a88b90e8381aa38f,
         type: 3}
@@ -11940,7 +11935,7 @@ PrefabInstance:
     - target: {fileID: 7474421086095646079, guid: 2849271366b74b04990105553b85ea49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7109301
+      value: -0.37135398
       objectReference: {fileID: 0}
     - target: {fileID: 7474421086095646079, guid: 2849271366b74b04990105553b85ea49,
         type: 3}
@@ -11950,7 +11945,7 @@ PrefabInstance:
     - target: {fileID: 7474421086095646079, guid: 2849271366b74b04990105553b85ea49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1961956
+      value: 3.9058256
       objectReference: {fileID: 0}
     - target: {fileID: 7474421086095646079, guid: 2849271366b74b04990105553b85ea49,
         type: 3}
@@ -11991,11 +11986,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cowboy - Red -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8552057873570311621, guid: 2849271366b74b04990105553b85ea49,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

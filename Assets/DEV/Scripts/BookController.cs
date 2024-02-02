@@ -111,8 +111,8 @@ public class BookController : MonoBehaviour
 
         bookTransform.DOKill();
         Transform temp = bookTransform;
-        bookTransform.DOMove(targetPosition, 1f).SetEase(Ease.OutQuad);
-        bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1f).SetEase(Ease.OutQuad).OnComplete(() => PlayParticleEffect(temp.position));
+        bookTransform.DOMove(targetPosition, 1.75f).SetEase(Ease.InOutBack);
+        bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.75f).SetEase(Ease.InOutBack).OnComplete(() => PlayParticleEffect(temp.position));
 
 
     }
