@@ -258,7 +258,7 @@ GameObject:
   m_Layer: 0
   m_Name: BookPlacementPivot
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -271,7 +271,7 @@ Transform:
   m_GameObject: {fileID: 1809731047217059569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0046, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00493, y: 0.0008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -425,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 3564932759558015888}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0046, y: 0.0049, z: -0.00068202475}
+  m_LocalPosition: {x: -0.00493, y: 0.0049, z: -0.00068202475}
   m_LocalScale: {x: 1, y: 1, z: 0.85903674}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 7313741568299713258}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0046, y: 0.0002, z: -0.0007040255}
+  m_LocalPosition: {x: -0.00493, y: 0.0002, z: -0.0007040255}
   m_LocalScale: {x: 1, y: 1, z: 0.85903674}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -610,7 +610,7 @@ Transform:
   m_GameObject: {fileID: 7920333326631857403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0039, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00493, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -643,7 +643,7 @@ Transform:
   m_GameObject: {fileID: 9044350409751062431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.2080152, y: 0.00000023841858, z: 8.638939}
+  m_LocalPosition: {x: 0, y: 0, z: 6.3}
   m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
   m_ConstrainProportionsScale: 1
   m_Children:
