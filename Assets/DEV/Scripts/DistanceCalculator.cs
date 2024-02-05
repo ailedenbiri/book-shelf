@@ -1,5 +1,6 @@
 using DG.Tweening;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,8 @@ public class DistanceCalculator : MonoBehaviour
 
     public Vector3 AddPositionCalculate(Book book)
     {
-        if (addedBooks.Count == 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
+        
+        if (addedBooks.Count == 0 && book.Genre == bookSettings.Genre && (book.ColorOfBook == bookSettings.ColorOfBook || bookSettings.ColorOfBook == ColorOfBook.Empty))
         {
             AddToLength(book.thickness);
             currentPos.x += book.thickness * 0.05f;
@@ -68,7 +70,7 @@ public class DistanceCalculator : MonoBehaviour
             return currentPos;
 
         }
-        else if (addedBooks.Count != 0 && book.Genre == bookSettings.Genre && book.ColorOfBook == bookSettings.ColorOfBook)
+        else if (addedBooks.Count != 0 && book.Genre == bookSettings.Genre && (book.ColorOfBook == bookSettings.ColorOfBook || bookSettings.ColorOfBook == ColorOfBook.Empty))
         {
 
             AddToLength(book.thickness);

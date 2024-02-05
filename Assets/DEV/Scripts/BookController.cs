@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 public class BookController : MonoBehaviour
 {
     public static BookController instance;
-
+    
     private Transform book;
     [SerializeField] private ParticleSystem particleEffect;
-
+    
 
     public Book selectedBook;
 
@@ -23,8 +24,7 @@ public class BookController : MonoBehaviour
 
     private void Start()
     {
-
-
+        
         if (particleEffect != null)
         {
             particleEffect.Stop();
@@ -118,7 +118,7 @@ public class BookController : MonoBehaviour
         bookSeq.Append(bookTransform.DOMove(targetPosition - Vector3.forward * 1f, 1.45f));
         bookSeq.Join(bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.45f));
         bookSeq.Append(bookTransform.DOMove(targetPosition, 0.3f));
-        bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f));
+        bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f,bookTransform.GetComponent<Book>()));
 
     }
 
@@ -138,14 +138,66 @@ public class BookController : MonoBehaviour
 
 
     }
+    
 
-    private void PlayParticleEffect(Vector3 position)
+    private void PlayParticleEffect(Vector3 position, Book book)
     {
-
-        if (particleEffect != null)
+        
+        
+        if (particleEffect != null) 
         {
+            Transform firstChild = particleEffect.transform.GetChild(0);
+            Transform thirdChild = particleEffect.transform.GetChild(1);
+            Transform fourthChild = particleEffect.transform.GetChild(3);
+            ParticleSystem childParticleSystem = thirdChild.GetComponent<ParticleSystem>();
+            ParticleSystem childParticleSystem2 = firstChild.GetComponent<ParticleSystem>();
+            ParticleSystem childParticleSystem3 = fourthChild.GetComponent<ParticleSystem>();
+            var color = childParticleSystem.colorOverLifetime;
+            var color2 = childParticleSystem3.colorOverLifetime;
+            Gradient grad = new Gradient();
+            Gradient grad2 = new Gradient();
+            switch (book.ColorOfBook)
+            {
+                case ColorOfBook.Blue:
+                    Debug.Log("Blue");
+                    
+                    grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.blue, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                    grad2.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.blue, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                    particleEffect.startColor = Color.blue;
+                    childParticleSystem2.startColor = Color.blue;
+                    
+                    color.color = grad;
+                    color2.color = grad2;
+                    
+                    break;
+                case ColorOfBook.Purple:
+                    Debug.Log("purple");
+                    grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.magenta, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                    grad2.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.magenta, 0.0f), new GradientColorKey(Color.white, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                    particleEffect.startColor = Color.magenta;
+                    childParticleSystem2.startColor = Color.magenta;
+                    color.color = grad;
+                    color2.color = grad2;
+                    break;
+                case ColorOfBook.Red:
+                    Debug.Log("Red");
+                    grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.red, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                    grad2.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.red, 0.0f), new GradientColorKey(Color.white, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                    particleEffect.startColor = Color.red;
+                    childParticleSystem2.startColor = Color.red;
+                    color.color = grad;
+                    color2.color= grad2;
+                    break;
+                
+                default:
+                    
+                    break;
+            }
+
+
             particleEffect.transform.position = position;
             particleEffect.Play();
+            
 
             StartCoroutine(StopParticleEffectAfterDelay(particleEffect.main.duration));
         }
