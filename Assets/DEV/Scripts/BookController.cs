@@ -6,10 +6,10 @@ using System;
 public class BookController : MonoBehaviour
 {
     public static BookController instance;
-    
+
     private Transform book;
     [SerializeField] private ParticleSystem particleEffect;
-    
+
 
     public Book selectedBook;
 
@@ -24,7 +24,7 @@ public class BookController : MonoBehaviour
 
     private void Start()
     {
-        
+
         if (particleEffect != null)
         {
             particleEffect.Stop();
@@ -79,7 +79,6 @@ public class BookController : MonoBehaviour
                     {
                         GameManager.instance.state = GameManager.GameState.Waiting;
                         Vector3 bookPoint = shelf.AddPositionCalculate(selectedBook);
-                        selectedBook.placed = true;
                         selectedBook.GetComponent<Collider>().enabled = false;
                         selectedBook = null;
                     }
@@ -118,7 +117,7 @@ public class BookController : MonoBehaviour
         bookSeq.Append(bookTransform.DOMove(targetPosition - Vector3.forward * 1f, 1.45f));
         bookSeq.Join(bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.45f));
         bookSeq.Append(bookTransform.DOMove(targetPosition, 0.3f));
-        bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f,bookTransform.GetComponent<Book>()));
+        bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f, bookTransform.GetComponent<Book>()));
 
     }
 
@@ -138,13 +137,13 @@ public class BookController : MonoBehaviour
 
 
     }
-    
+
 
     private void PlayParticleEffect(Vector3 position, Book book)
     {
-        
-        
-        if (particleEffect != null) 
+
+
+        if (particleEffect != null)
         {
             Transform firstChild = particleEffect.transform.GetChild(0);
             Transform thirdChild = particleEffect.transform.GetChild(1);
@@ -160,15 +159,15 @@ public class BookController : MonoBehaviour
             {
                 case ColorOfBook.Blue:
                     Debug.Log("Blue");
-                    
+
                     grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.blue, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
                     grad2.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.white, 0.0f), new GradientColorKey(Color.blue, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
                     particleEffect.startColor = Color.blue;
                     childParticleSystem2.startColor = Color.blue;
-                    
+
                     color.color = grad;
                     color2.color = grad2;
-                    
+
                     break;
                 case ColorOfBook.Purple:
                     Debug.Log("purple");
@@ -186,18 +185,18 @@ public class BookController : MonoBehaviour
                     particleEffect.startColor = Color.red;
                     childParticleSystem2.startColor = Color.red;
                     color.color = grad;
-                    color2.color= grad2;
+                    color2.color = grad2;
                     break;
-                
+
                 default:
-                    
+
                     break;
             }
 
 
             particleEffect.transform.position = position;
             particleEffect.Play();
-            
+
 
             StartCoroutine(StopParticleEffectAfterDelay(particleEffect.main.duration));
         }

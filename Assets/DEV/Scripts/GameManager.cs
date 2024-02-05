@@ -1,13 +1,19 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] private int health = 3;
     [SerializeField] private List<Book> bookObjects = new List<Book>();
+
+    public CanvasGroup winPanel;
+    public CanvasGroup losePanel;
 
     public enum GameState
     {
@@ -24,7 +30,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        winPanel = GameObject.Find("WinPanel").GetComponent<CanvasGroup>();
+        losePanel = GameObject.Find("LosePanel").GetComponent<CanvasGroup>();
+        winPanel.gameObject.SetActive(false);
+        losePanel.gameObject.SetActive(false);
         Application.targetFrameRate = 60;
+        winPanel.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => GoNextLevel());
+        losePanel.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RestartLevel());
+        losePanel.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => GoToMainMenu());
         GetAllBooksInScene();
     }
 
@@ -41,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
         if (counter == temp)
         {
-            Debug.Log("Oyun bitti");
+            LevelCompleted();
         }
         return counter == temp;
     }
@@ -93,11 +106,23 @@ public class GameManager : MonoBehaviour
 
     public void LevelCompleted()
     {
-        Debug.Log("Congratulations!!!");
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            winPanel.gameObject.SetActive(true);
+            state = GameState.Waiting;
+            winPanel.DOFade(1f, 0.6f);
+        });
+        
     }
     public void GameOver()
     {
-        Debug.Log("GameOver!!!");
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            losePanel.gameObject.SetActive(true);
+            state = GameState.Waiting;
+            losePanel.DOFade(1f, 0.6f);
+        });
+        
     }
 
     public void CorrectShelf()
@@ -109,18 +134,20 @@ public class GameManager : MonoBehaviour
     {
         Taptic.Medium();
     }
-    public void StartMenu()
-    {
 
-    }
-    public void RestartMenu()
+    public void GoNextLevel()
     {
-        //RestartMenu.setActive(true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void PauseMenu()
+    public void GoToMainMenu()
     {
+        SceneManager.LoadScene("MainMenu");
+    }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 

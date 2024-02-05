@@ -67,6 +67,8 @@ public class DistanceCalculator : MonoBehaviour
             }
             BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
             DOVirtual.DelayedCall(1f, () => GameManager.instance.state = GameManager.GameState.Playing);
+            book.placed = true;
+            GameManager.instance.CountBooks();
             return currentPos;
 
         }
@@ -86,6 +88,8 @@ public class DistanceCalculator : MonoBehaviour
             }
             BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
             DOVirtual.DelayedCall(1f, () => GameManager.instance.state = GameManager.GameState.Playing);
+            book.placed = true;
+            GameManager.instance.CountBooks();
             return currentPos;
         }
         else
@@ -106,7 +110,7 @@ public class DistanceCalculator : MonoBehaviour
                     GameManager.instance.Vibrate();
                     
                 });
-
+                GameManager.instance.WrongShelf();
                 return currentPos;
             }
             else
@@ -125,6 +129,7 @@ public class DistanceCalculator : MonoBehaviour
                     GameManager.instance.Vibrate();
                     WrongShelfPosCalculate(tempBook.GetComponent<Book>());
                 });
+                GameManager.instance.WrongShelf();
                 return currentPos;
             }
 
