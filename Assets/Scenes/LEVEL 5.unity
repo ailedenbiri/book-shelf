@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 7091052272487147366, guid: f7202849630086c4d882c9dbfb6f5d98,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9197317522376327513, guid: f7202849630086c4d882c9dbfb6f5d98,
         type: 3}
@@ -228,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 5040582139402305064, guid: d61e750f0381a7b459762656dc86acf9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5363697725510673825, guid: d61e750f0381a7b459762656dc86acf9,
         type: 3}
@@ -307,7 +307,7 @@ PrefabInstance:
     - target: {fileID: 2231792960423176261, guid: 5cac735cb12a1654b9f3b332f49c3a24,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714612173147676789, guid: 5cac735cb12a1654b9f3b332f49c3a24,
         type: 3}
@@ -579,7 +579,7 @@ PrefabInstance:
     - target: {fileID: 2231792960423176261, guid: 5cac735cb12a1654b9f3b332f49c3a24,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714612173147676789, guid: 5cac735cb12a1654b9f3b332f49c3a24,
         type: 3}
@@ -763,6 +763,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &315141078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315141082}
+  - component: {fileID: 315141081}
+  - component: {fileID: 315141080}
+  - component: {fileID: 315141079}
+  m_Layer: 0
+  m_Name: BackWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &315141079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315141078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &315141080
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315141078}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &315141081
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315141078}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &315141082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315141078}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.70022, z: -0, w: 0.7139272}
+  m_LocalPosition: {x: 0.6981, y: 0.052, z: -0.22}
+  m_LocalScale: {x: 0.2, y: 0.20511952, z: 5.16514}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -88.889, z: 0}
 --- !u!1001 &317737236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -844,7 +949,7 @@ PrefabInstance:
     - target: {fileID: 7497095353814183228, guid: 9e432ef6d53df7d42aa2086339407a9f,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -905,7 +1010,7 @@ PrefabInstance:
     - target: {fileID: 521000986523620444, guid: 0d74ba3dcbe75df49beb1d4c0ef853a9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 892860380195715770, guid: 0d74ba3dcbe75df49beb1d4c0ef853a9,
         type: 3}
@@ -994,7 +1099,7 @@ PrefabInstance:
     - target: {fileID: 6701675660367564057, guid: 7ec32acb65d61a64a8de5715458345f9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7882972045747482462, guid: 7ec32acb65d61a64a8de5715458345f9,
         type: 3}
@@ -1073,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 562686480555198328, guid: ae4d82d48f5b342408efff9de4a7e2ab,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6968864521520025400, guid: ae4d82d48f5b342408efff9de4a7e2ab,
         type: 3}
@@ -1157,7 +1262,7 @@ PrefabInstance:
     - target: {fileID: 660303152773359569, guid: 7ab459e39129bb64193e66d8885868f0,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4504690003959502321, guid: 7ab459e39129bb64193e66d8885868f0,
         type: 3}
@@ -1296,7 +1401,7 @@ PrefabInstance:
     - target: {fileID: 9019696599206208812, guid: c85e0cfde5d962d4d9cb2979bebcffc8,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1325,7 +1430,7 @@ PrefabInstance:
     - target: {fileID: 1949428219049312871, guid: cae818163f65733469c909decf998728,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656167195157837017, guid: cae818163f65733469c909decf998728,
         type: 3}
@@ -1469,7 +1574,7 @@ PrefabInstance:
     - target: {fileID: 4415606135826112685, guid: 7a98f62760c79974aafacf74474ce350,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1621,7 +1726,7 @@ PrefabInstance:
     - target: {fileID: 1949428219049312871, guid: cae818163f65733469c909decf998728,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656167195157837017, guid: cae818163f65733469c909decf998728,
         type: 3}
@@ -1750,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 7492789677748143917, guid: b75cd1732401ebe4c8811453ccc83170,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1774,7 +1879,7 @@ PrefabInstance:
     - target: {fileID: 521000986523620444, guid: 0d74ba3dcbe75df49beb1d4c0ef853a9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 892860380195715770, guid: 0d74ba3dcbe75df49beb1d4c0ef853a9,
         type: 3}
@@ -1918,7 +2023,7 @@ PrefabInstance:
     - target: {fileID: 6635691263039677634, guid: de776b63a90bf584db0d3627919cbbbe,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1942,7 +2047,7 @@ PrefabInstance:
     - target: {fileID: 2155422513978239626, guid: ff40f9e87a10fe94c9af2b26c79de271,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5218844727133031699, guid: ff40f9e87a10fe94c9af2b26c79de271,
         type: 3}
@@ -2196,7 +2301,7 @@ PrefabInstance:
     - target: {fileID: 6133426092644799535, guid: dfdb4730da89cba40a5f363b235cba7e,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2220,7 +2325,7 @@ PrefabInstance:
     - target: {fileID: 1208907120551739603, guid: 3e32db1591f21414ca522a07cc2eb808,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6286886953796764791, guid: 3e32db1591f21414ca522a07cc2eb808,
         type: 3}
@@ -2339,7 +2444,7 @@ PrefabInstance:
     - target: {fileID: 2155422513978239626, guid: ff40f9e87a10fe94c9af2b26c79de271,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5218844727133031699, guid: ff40f9e87a10fe94c9af2b26c79de271,
         type: 3}
@@ -2674,7 +2779,7 @@ PrefabInstance:
     - target: {fileID: 6635691263039677634, guid: de776b63a90bf584db0d3627919cbbbe,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2703,7 +2808,7 @@ PrefabInstance:
     - target: {fileID: 2829234533029760306, guid: 38bac2228638f474483cfa32cbd27cec,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6081720123679699018, guid: 38bac2228638f474483cfa32cbd27cec,
         type: 3}
@@ -2837,7 +2942,7 @@ PrefabInstance:
     - target: {fileID: 8172009701156484686, guid: 104dc5e04b1178744b53b99564035852,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2916,7 +3021,7 @@ PrefabInstance:
     - target: {fileID: 7198158045084121519, guid: d41b417db96bff440bf6dfdd60b5d847,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2945,7 +3050,7 @@ PrefabInstance:
     - target: {fileID: 7786063528122348051, guid: 5572f9003cff94e48a5c5df9a18aaa51,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8943600443851330630, guid: 5572f9003cff94e48a5c5df9a18aaa51,
         type: 3}
@@ -3220,6 +3325,7 @@ SceneRoots:
   - {fileID: 1509424509}
   - {fileID: 1370392094}
   - {fileID: 79855288}
+  - {fileID: 315141082}
   - {fileID: 40347697}
   - {fileID: 105037158}
   - {fileID: 1419438283}

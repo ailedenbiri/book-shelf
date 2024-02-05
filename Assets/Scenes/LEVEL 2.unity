@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 8171713718233154020, guid: ed06dbeb3630dd649bc153686503100a,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1185,7 +1185,7 @@ PrefabInstance:
     - target: {fileID: 6701675660367564057, guid: 7ec32acb65d61a64a8de5715458345f9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7882972045747482462, guid: 7ec32acb65d61a64a8de5715458345f9,
         type: 3}
@@ -1274,7 +1274,7 @@ PrefabInstance:
     - target: {fileID: 6701675660367564057, guid: 7ec32acb65d61a64a8de5715458345f9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7882972045747482462, guid: 7ec32acb65d61a64a8de5715458345f9,
         type: 3}
@@ -1408,7 +1408,7 @@ PrefabInstance:
     - target: {fileID: 7198158045084121519, guid: d41b417db96bff440bf6dfdd60b5d847,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1487,7 +1487,7 @@ PrefabInstance:
     - target: {fileID: 7492789677748143917, guid: b75cd1732401ebe4c8811453ccc83170,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1898,7 +1898,7 @@ PrefabInstance:
     - target: {fileID: 6635691263039677634, guid: de776b63a90bf584db0d3627919cbbbe,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2014,7 +2014,7 @@ PrefabInstance:
     - target: {fileID: 5040582139402305064, guid: d61e750f0381a7b459762656dc86acf9,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5363697725510673825, guid: d61e750f0381a7b459762656dc86acf9,
         type: 3}
@@ -2148,7 +2148,7 @@ PrefabInstance:
     - target: {fileID: 8172009701156484686, guid: 104dc5e04b1178744b53b99564035852,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2343,7 +2343,7 @@ PrefabInstance:
     - target: {fileID: 1949428219049312871, guid: cae818163f65733469c909decf998728,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656167195157837017, guid: cae818163f65733469c909decf998728,
         type: 3}

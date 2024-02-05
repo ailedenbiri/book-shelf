@@ -244,7 +244,7 @@ PrefabInstance:
     - target: {fileID: 2829234533029760306, guid: 38bac2228638f474483cfa32cbd27cec,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6081720123679699018, guid: 38bac2228638f474483cfa32cbd27cec,
         type: 3}
@@ -693,7 +693,7 @@ PrefabInstance:
     - target: {fileID: 562686480555198328, guid: ae4d82d48f5b342408efff9de4a7e2ab,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6968864521520025400, guid: ae4d82d48f5b342408efff9de4a7e2ab,
         type: 3}
@@ -860,7 +860,7 @@ PrefabInstance:
     - target: {fileID: 3411124587704781026, guid: 33fd7bc32bd338444a625ea1cb99c77f,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6541606926452730517, guid: 33fd7bc32bd338444a625ea1cb99c77f,
         type: 3}
@@ -1189,7 +1189,7 @@ PrefabInstance:
     - target: {fileID: 4676196788810098678, guid: 12b433961de53ca47b7d88fbbc75d62c,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8699870647313576139, guid: 12b433961de53ca47b7d88fbbc75d62c,
         type: 3}
@@ -1461,7 +1461,7 @@ PrefabInstance:
     - target: {fileID: 9019696599206208812, guid: c85e0cfde5d962d4d9cb2979bebcffc8,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2106,7 +2106,7 @@ PrefabInstance:
     - target: {fileID: 562686480555198328, guid: ae4d82d48f5b342408efff9de4a7e2ab,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6968864521520025400, guid: ae4d82d48f5b342408efff9de4a7e2ab,
         type: 3}
@@ -2506,7 +2506,7 @@ PrefabInstance:
     - target: {fileID: 4676196788810098678, guid: 12b433961de53ca47b7d88fbbc75d62c,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8699870647313576139, guid: 12b433961de53ca47b7d88fbbc75d62c,
         type: 3}
@@ -2867,7 +2867,7 @@ PrefabInstance:
     - target: {fileID: 1260189299724105437, guid: f593eb59d4bc3d244a4744dc0f07ce8d,
         type: 3}
       propertyPath: ColorOfBook
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6956516396693447595, guid: f593eb59d4bc3d244a4744dc0f07ce8d,
         type: 3}
