@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.iOS;
+//using UnityEngine.iOS;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -153,7 +153,9 @@ public class Taptic : MonoBehaviour {
 #endif
         }
 
+#if UNITY_IOS
         static bool iPhone6s() {
+
                 return SystemInfo.deviceModel == "iPhone8,1" || SystemInfo.deviceModel == "iPhone8,2";
         }
 
@@ -167,4 +169,5 @@ public class Taptic : MonoBehaviour {
                 return false;
         }
 
+#endif
 }
