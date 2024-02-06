@@ -962,7 +962,8 @@ PrefabInstance:
         type: 3}
       propertyPath: bookSettings
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 7b9c804bd81f6b840a52a581511f0e34,
+        type: 2}
     - target: {fileID: 2336258054530696276, guid: 34906ebfcaedfde4cb0ac2c2b83f6d43,
         type: 3}
       propertyPath: m_Name
