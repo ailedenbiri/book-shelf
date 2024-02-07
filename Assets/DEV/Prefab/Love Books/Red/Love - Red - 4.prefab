@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4422873108761907574}
   - component: {fileID: 2155422513978239626}
   - component: {fileID: 8270277425965119631}
+  - component: {fileID: -8106266890997134671}
   m_Layer: 0
   m_Name: Love - Red - 4
   m_TagString: Untagged
@@ -130,3 +131,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-8106266890997134671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5218844727133031699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.19999999, y: 0.5, z: 0.37914827}
+  m_Center: {x: -0.00022755936, y: 0.25, z: 0.009574145}
