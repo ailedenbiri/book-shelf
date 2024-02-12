@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 181840744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.964228, y: 5.607679, z: 2.9972804}
+  m_LocalPosition: {x: -10.964228, y: 5.607679, z: 1.7732427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -751,7 +751,7 @@ Transform:
   m_GameObject: {fileID: 576362929}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0250099, y: 3.7384727, z: 1.7855496}
+  m_LocalPosition: {x: -1.0250099, y: 3.7384727, z: 0.561512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -851,7 +851,7 @@ Transform:
   m_GameObject: {fileID: 635142275}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0250099, y: 3.7384727, z: 1.7855496}
+  m_LocalPosition: {x: -1.0250099, y: 3.7384727, z: 0.561512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -883,7 +883,7 @@ Transform:
   m_GameObject: {fileID: 670335899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.93596125, y: 5.69541, z: -2.649973}
+  m_LocalPosition: {x: -0.93596125, y: 5.69541, z: -3.8740106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2172,7 +2172,7 @@ Transform:
   m_GameObject: {fileID: 1478280143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44892904, y: 3.0593505, z: 4.8440375}
+  m_LocalPosition: {x: -0.44892904, y: 3.0593505, z: 3.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

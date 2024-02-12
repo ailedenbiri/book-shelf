@@ -1425,6 +1425,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 512d81e450ded1e4a85c1bca0849f382,
         type: 2}
+    - target: {fileID: 7817649642166748054, guid: e2f07817563f5c84b8ca356e520bc3b4,
+        type: 3}
+      propertyPath: bookSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fe37772ce1ab6740bb4517b3549b2b8,
+        type: 2}
     - target: {fileID: 8129605677786457523, guid: e2f07817563f5c84b8ca356e520bc3b4,
         type: 3}
       propertyPath: m_Name
