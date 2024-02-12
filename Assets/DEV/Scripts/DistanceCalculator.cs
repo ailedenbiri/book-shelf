@@ -41,11 +41,14 @@ public class DistanceCalculator : MonoBehaviour
         else if (shelfLength - bookThickness == 0)
         {
             added = true;
+            BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
+            boxCollider.enabled = false;
             Debug.Log("Shelf fit perfectly");
 
         }
         else
         {
+            
             added = false;
             Debug.Log("Doesn't fit");
         }
