@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: chewy.regular SDF
+  m_Name: UI
   m_EditorClassIdentifier: 
-  hashCode: 1970703685
+  hashCode: 2748
   material: {fileID: 2103385868226356383}
-  materialHashCode: -2118978747
+  materialHashCode: 197744156
   m_Version: 1.1.0
   m_SourceFontFileGUID: b2597d664905f3f4287cd08a6f96d56c
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: b2597d664905f3f4287cd08a6f96d56c,
@@ -2149,7 +2149,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0.2
+    - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -2163,12 +2163,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.3
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.55125
-    - _ScaleRatioC: 0.55125
+    - _ScaleRatioB: 0.73125
+    - _ScaleRatioC: 0.73125
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

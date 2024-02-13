@@ -94,7 +94,6 @@ public class Taptic : MonoBehaviour {
                 }
 #elif UNITY_ANDROID
                 AndroidTaptic.Haptic(HapticTypes.MediumImpact);
-        Debug.Log("Taptic Med");
 #endif
         }
         public static void Heavy() {

@@ -56,7 +56,7 @@ public class DistanceCalculator : MonoBehaviour
 
     public Vector3 AddPositionCalculate(Book book)
     {
-        
+        Taptic.Light();
         if (addedBooks.Count == 0 && book.Genre == bookSettings.Genre && (book.ColorOfBook == bookSettings.ColorOfBook || bookSettings.ColorOfBook == ColorOfBook.Empty))
         {
             AddToLength(book.thickness);
@@ -110,7 +110,6 @@ public class DistanceCalculator : MonoBehaviour
                     BookController.instance.ReturnToOriginalPosition(tempBook, true);
                     tempBook.GetComponent<Book>().placed = false;
                     tempBook.GetComponent<Collider>().enabled = true;
-                    GameManager.instance.Vibrate();
                     
                 });
                 GameManager.instance.WrongShelf();
@@ -129,7 +128,6 @@ public class DistanceCalculator : MonoBehaviour
                     BookController.instance.ReturnToOriginalPosition(tempBook, true);
                     tempBook.GetComponent<Book>().placed = false;
                     tempBook.GetComponent<Collider>().enabled = true;
-                    GameManager.instance.Vibrate();
                     WrongShelfPosCalculate(tempBook.GetComponent<Book>());
                 });
                 GameManager.instance.WrongShelf();
