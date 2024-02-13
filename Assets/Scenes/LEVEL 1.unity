@@ -858,11 +858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CursorCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 787235246414338684, guid: 87ce7937ccc5bc845a889c97cca7e3dc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8547014288518255712, guid: 87ce7937ccc5bc845a889c97cca7e3dc,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1622,6 +1617,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7b9c804bd81f6b840a52a581511f0e34,
         type: 2}
+    - target: {fileID: 7301949910752078925, guid: 34906ebfcaedfde4cb0ac2c2b83f6d43,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

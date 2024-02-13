@@ -26,6 +26,11 @@ public class SettingsBehaviour : MonoBehaviour
         ToggleVibration(false);
     }
 
+    private void Update()
+    {
+        Debug.Log(Taptic.tapticOn);
+    }
+
     public void ToggleSettings()
     {
         settingsOpen = !settingsOpen;
