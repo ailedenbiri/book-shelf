@@ -170,8 +170,8 @@ RectTransform:
   m_Children:
   - {fileID: 76585284071781008}
   - {fileID: 2963806326529949939}
-  - {fileID: 6545542935325187542}
   - {fileID: 2961001456611486019}
+  - {fileID: 6545542935325187542}
   - {fileID: 3987913968280112295}
   - {fileID: 8555201123959384006}
   m_Father: {fileID: 0}
@@ -1426,7 +1426,6 @@ GameObject:
   - component: {fileID: 2961001456611486019}
   - component: {fileID: 3152278466890775844}
   - component: {fileID: 8725743021636716701}
-  - component: {fileID: 2812893140228057307}
   m_Layer: 5
   m_Name: TextBG
   m_TagString: Untagged
@@ -1449,10 +1448,10 @@ RectTransform:
   - {fileID: 5481133441860671012}
   m_Father: {fileID: 5508752471114106161}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -288.68042, y: 820.6098}
-  m_SizeDelta: {x: 100, y: 59.9976}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 155.31958, y: -139.3902}
+  m_SizeDelta: {x: 100, y: 59.99762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3152278466890775844
 CanvasRenderer:
@@ -1492,29 +1491,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!223 &2812893140228057307
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7784722783491319556}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: -1
-  m_TargetDisplay: 0
 --- !u!1 &7941179521256107861
 GameObject:
   m_ObjectHideFlags: 0
