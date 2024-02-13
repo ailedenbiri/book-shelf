@@ -10,6 +10,8 @@ public class BookController : MonoBehaviour
     private Transform book;
     [SerializeField] private ParticleSystem particleEffect;
 
+    [SerializeField] ParticleSystem missedParticle;
+
 
     public Book selectedBook;
 
@@ -96,15 +98,20 @@ public class BookController : MonoBehaviour
         bookTransform.GetComponent<Book>().UpdatePositions();
 
         bookTransform.DORotate(new Vector3(0f, -90f, 0f), 0.5f);
-        bookTransform.DOMoveX(0.10f, 0.5f);
-        bookTransform.DOMoveY(0.5f, 0.5f);
-        bookTransform.DOMoveZ(0f, 0.5f).OnComplete(() =>
+        Debug.Log(Camera.main.transform.position + Vector3.forward * 4.5f - Vector3.up * 1.5f);
+        bookTransform.DOMove(Camera.main.transform.position + Vector3.forward * 4.5f - Vector3.up * 2f, 0.5f).OnComplete(() =>
         {
             GameManager.instance.state = GameManager.GameState.Playing;
         });
+        /*bookTransform.DOMoveX(0.10f, 0.5f);
+        bookTransform.DOMoveY(0.5f, 0.5f);
+        bookTransform.DOMoveZ(0f, 0.5f).OnComplete(() =>
+        {
+            
+        });*/
     }
 
-    public void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition)
+    public void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition, bool missed = false)
     {
 
 
@@ -117,7 +124,15 @@ public class BookController : MonoBehaviour
         bookSeq.Append(bookTransform.DOMove(targetPosition - Vector3.forward * 1f, 1.45f));
         bookSeq.Join(bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.45f));
         bookSeq.Append(bookTransform.DOMove(targetPosition, 0.3f));
-        bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f, bookTransform.GetComponent<Book>()));
+        if (!missed)
+        {
+            bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f, bookTransform.GetComponent<Book>()));
+        }
+        else
+        {
+            bookSeq.AppendCallback(() => PlayMissedParticle(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.7f));
+        }
+
 
     }
 
@@ -138,8 +153,13 @@ public class BookController : MonoBehaviour
 
     }
 
+    public void PlayMissedParticle(Vector3 position)
+    {
+        missedParticle.transform.position = position;
+        missedParticle.Play();
+    }
 
-    private void PlayParticleEffect(Vector3 position, Book book)
+    public void PlayParticleEffect(Vector3 position, Book book)
     {
 
 

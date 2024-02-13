@@ -1,7 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] private int health = 3;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private Transform heartImage;
     [SerializeField] private List<Book> bookObjects = new List<Book>();
 
     public CanvasGroup winPanel;
@@ -30,6 +32,24 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        state = GameState.Waiting;
+        Transform mainCam = Camera.main.transform;
+        Transform cameraStartPos = GameObject.Find("CameraFirstPos").transform;
+        Vector3 cameraTargetPos = mainCam.position;
+        Quaternion cameraTargetRot = mainCam.rotation;
+        mainCam.position = cameraStartPos.position;
+        mainCam.rotation = cameraStartPos.rotation;
+        mainCam.DOMove(cameraTargetPos, 1.2f).SetEase(Ease.InSine);
+        mainCam.DORotateQuaternion(cameraTargetRot, 1.2f).SetEase(Ease.InSine).OnComplete(() =>
+        {
+            state = GameState.Playing;
+            FadeShelfInfos();
+        });
+        GameObject.Find("Button_Help").GetComponent<Button>().onClick.AddListener(FadeShelfInfos);
+        healthText = GameObject.Find("Text_HeartCount").GetComponent<TextMeshProUGUI>();
+        healthText.text = health.ToString();
+        heartImage = GameObject.Find("HealthBar").transform;
+
         winPanel = GameObject.Find("WinPanel").GetComponent<CanvasGroup>();
         losePanel = GameObject.Find("LosePanel").GetComponent<CanvasGroup>();
         winPanel.gameObject.SetActive(false);
@@ -39,6 +59,16 @@ public class GameManager : MonoBehaviour
         losePanel.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RestartLevel());
         losePanel.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => GoToMainMenu());
         GetAllBooksInScene();
+    }
+
+    public void FadeShelfInfos()
+    {
+        Sequence seq = DOTween.Sequence();
+        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").GetComponent<CanvasGroup>();
+        c.DOKill();
+        seq.SetId(c);
+        seq.Append(c.DOFade(1f, 0.6f));
+        seq.Append(c.DOFade(0f, 0.6f).SetDelay(2f));
     }
 
     public bool CountBooks()
@@ -69,12 +99,16 @@ public class GameManager : MonoBehaviour
         {
             health -= 1;
             Vibrate();
+            healthText.text = health.ToString();
+            heartImage.DOPunchScale(heartImage.lossyScale * 0.3f, 0.4f);
         }
         else if (health == 1)
         {
             health -= 1;
             Vibrate();
             GameOver();
+            healthText.text = health.ToString();
+            heartImage.DOPunchScale(heartImage.lossyScale * 0.3f, 0.4f);
         }
         else
         {
@@ -112,7 +146,7 @@ public class GameManager : MonoBehaviour
             state = GameState.Waiting;
             winPanel.DOFade(1f, 0.6f);
         });
-        
+
     }
     public void GameOver()
     {
@@ -122,7 +156,7 @@ public class GameManager : MonoBehaviour
             state = GameState.Waiting;
             losePanel.DOFade(1f, 0.6f);
         });
-        
+
     }
 
     public void CorrectShelf()

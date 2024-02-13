@@ -102,7 +102,7 @@ public class DistanceCalculator : MonoBehaviour
                 Vector3 tempPos = currentPos;
                 currentPos.x += book.thickness * 0.05f;
                 Transform tempBook = book.transform;
-                BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
+                BookController.instance.PlaceBookOnShelf(book.transform, currentPos, true);
                 currentPos = tempPos;
                 DOVirtual.DelayedCall(2f, () =>
                 {
@@ -122,7 +122,7 @@ public class DistanceCalculator : MonoBehaviour
                 Debug.Log("Wrong Shelf!!");
                 currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
                 Transform tempBook = book.transform;
-                BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
+                BookController.instance.PlaceBookOnShelf(book.transform, currentPos, true);
                 DOVirtual.DelayedCall(2f, () =>
                 {
                     tempBook.DOKill();
