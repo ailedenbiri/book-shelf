@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private Transform heartImage;
     [SerializeField] private List<Book> bookObjects = new List<Book>();
-
+    public string lastLevel;
     public CanvasGroup winPanel;
     public CanvasGroup losePanel;
 
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
         state = GameState.Waiting;
         Transform mainCam = Camera.main.transform;
         Transform cameraStartPos = GameObject.Find("CameraFirstPos").transform;
@@ -171,6 +172,7 @@ public class GameManager : MonoBehaviour
 
     public void GoNextLevel()
     {
+        SaveLastLevel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -182,6 +184,14 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SaveLastLevel()
+    {
+        lastLevel = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString(lastLevel, lastLevel);
+        PlayerPrefs.Save();
+        Debug.Log("Saved!!!");
     }
 
 
