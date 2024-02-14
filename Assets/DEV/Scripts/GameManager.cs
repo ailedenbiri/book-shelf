@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelCompleted()
     {
+        state = GameState.Waiting;
         DOVirtual.DelayedCall(3f, () =>
         {
             winPanel.gameObject.SetActive(true);
