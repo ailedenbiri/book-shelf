@@ -14935,6 +14935,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   heartImage: {fileID: 0}
   bookObjects: []
+  lastLevel: 
   winPanel: {fileID: 0}
   losePanel: {fileID: 0}
   state: 0

@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     public void FadeShelfInfos()
     {
         Sequence seq = DOTween.Sequence();
-        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(0).GetComponent<CanvasGroup>();
+        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").GetComponent<CanvasGroup>();
         c.DOKill();
         seq.SetId(c);
         seq.Append(c.DOFade(1f, 0.6f));
