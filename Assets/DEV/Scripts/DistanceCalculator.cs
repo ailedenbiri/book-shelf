@@ -4,145 +4,116 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class DistanceCalculator : MonoBehaviour
 {
-    public static DistanceCalculator instance;
-    [SerializeField] public int shelfLength = 10;
     [SerializeField] public BookSettingsScriptableObject bookSettings;
-    [SerializeField] public Vector3 currentPos;
-    List<Book> addedBooks = new List<Book>();
-    [SerializeField] public float sizeCoefficient;
-    private bool added;
 
-    private void Awake()
-    {
-        instance = this;
-        added = false;
+    public int shelfLength = 8;
+    public int gridCount = 8;
+    List<ShelfGrid> grids = new List<ShelfGrid>();
+    [SerializeField] int[] gridColors;
 
-    }
+    public float sizeCoefficient;
 
     private void Start()
     {
-        currentPos = transform.GetChild(0).position;
+        CreateGrids();
     }
-    public void AddToLength(int bookThickness)
-    {
-        GameManager.instance.CountBooks();
-        if (shelfLength - bookThickness > 0)
-        {
-            shelfLength -= bookThickness;
-            Debug.Log("Remaining shelf length: " + shelfLength);
-            added = true;
-        }
-        else if (shelfLength - bookThickness == 0)
-        {
-            added = true;
-            BoxCollider boxCollider = gameObject.GetComponent<BoxCollider>();
-            boxCollider.enabled = false;
-            Debug.Log("Shelf fit perfectly");
 
+    public void CreateGrids()
+    {
+        for (int i = 0; i < shelfLength; i++)
+        {
+            ShelfGrid g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.position + Vector3.right * 0.2f + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
+            g.genre = this.bookSettings.Genre;
+            ColorOfBook color = ColorOfBook.Empty;
+            switch (gridColors[i])
+            {
+                case 1:
+                    color = ColorOfBook.Red;
+                    break;
+                case 2:
+                    color = ColorOfBook.Purple;
+                    break;
+                case 3:
+                    color = ColorOfBook.Blue;
+                    break;
+                default:
+                    break;
+            }
+            g.color = color;
+            g.shelf = this;
+            grids.Add(g);
+            g.UpdateColor();
+        }
+    }
+    public bool AddBook(Book book, ShelfGrid grid)
+    {
+        List<ShelfGrid> bookReplacingGrids = new List<ShelfGrid>();
+        int gridStart = grids.IndexOf(grid);
+        for (int i = gridStart; i < gridStart + book.thickness; i++)
+        {
+            if (i == (grids.Count) || !grids[i].isEmpty)
+            {
+                GameManager.instance.state = GameManager.GameState.Playing;
+                return false;
+            }
+            bookReplacingGrids.Add(grids[i]);
+        }
+
+        bool replaced = bookReplacingGrids.All(x => (x.color == book.ColorOfBook && x.genre == book.Genre) || (x.color == ColorOfBook.Empty && x.genre == book.Genre));
+
+        Vector3 bookPos = Vector3.zero;
+        foreach (var item in bookReplacingGrids)
+        {
+            bookPos += item.transform.position;
+        }
+        bookPos /= bookReplacingGrids.Count;
+        bookPos.y = this.transform.position.y;
+
+        //BOOK REPLACING
+        Transform bookTransform = book.transform;
+        bookTransform.DOKill();
+        //bookTransform.DOMove(targetPosition, 1.75f).SetEase(Ease.OutQuart);
+        //bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.75f).SetEase(Ease.InOutBack).OnComplete(() => PlayParticleEffect(bookTransform.position));
+
+        Sequence bookSeq = DOTween.Sequence();
+
+        bookSeq.Append(bookTransform.DOMove(bookPos - Vector3.forward * 1f, 1.45f));
+        bookSeq.Join(bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.45f));
+        bookSeq.Append(bookTransform.DOMove(bookPos, 0.3f));
+        BookController.instance.selectedBook = null;
+        if (replaced)
+        {
+            bookSeq.AppendCallback(() =>
+            {
+                BookController.instance.PlayParticleEffect(bookPos + Vector3.up * 0.5f - Vector3.forward * 0.5f, bookTransform.GetComponent<Book>());
+                GameManager.instance.state = GameManager.GameState.Playing;
+                book.GetComponent<Collider>().enabled = false;
+                book.placed = true;
+                foreach (var item in bookReplacingGrids)
+                {
+                    item.isEmpty = false;
+                }
+                GameManager.instance.CountBooks();
+            });
         }
         else
         {
-            
-            added = false;
-            Debug.Log("Doesn't fit");
-        }
-    }
-
-    public Vector3 AddPositionCalculate(Book book)
-    {
-        Taptic.Light();
-        if (addedBooks.Count == 0 && book.Genre == bookSettings.Genre && (book.ColorOfBook == bookSettings.ColorOfBook || bookSettings.ColorOfBook == ColorOfBook.Empty))
-        {
-            AddToLength(book.thickness);
-            currentPos.x += book.thickness * 0.05f;
-            Debug.Log("Again same position");
-            DOVirtual.DelayedCall(1f, () => { GameManager.instance.UnlockBooks(); });
-            if (added == true)
+            bookSeq.AppendCallback(() =>
             {
-                addedBooks.Add(book);
-                added = false;
-            }
-            BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
-            DOVirtual.DelayedCall(1f, () => GameManager.instance.state = GameManager.GameState.Playing);
-            book.placed = true;
-            GameManager.instance.CountBooks();
-            return currentPos;
-
-        }
-        else if (addedBooks.Count != 0 && book.Genre == bookSettings.Genre && (book.ColorOfBook == bookSettings.ColorOfBook || bookSettings.ColorOfBook == ColorOfBook.Empty))
-        {
-
-            AddToLength(book.thickness);
-            DOVirtual.DelayedCall(1f, () => { GameManager.instance.UnlockBooks(); });
-
-            if (added == true)
-            {
-                currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
-                addedBooks.Add(book);
-                Debug.Log("Added new position");
-                added = false;
-
-            }
-            BookController.instance.PlaceBookOnShelf(book.transform, currentPos);
-            DOVirtual.DelayedCall(1f, () => GameManager.instance.state = GameManager.GameState.Playing);
-            book.placed = true;
-            GameManager.instance.CountBooks();
-            return currentPos;
-        }
-        else
-        {
-            if (addedBooks.Count == 0)
-            {
-                Vector3 tempPos = currentPos;
-                currentPos.x += book.thickness * 0.05f;
-                Transform tempBook = book.transform;
-                BookController.instance.PlaceBookOnShelf(book.transform, currentPos, true);
-                currentPos = tempPos;
-                DOVirtual.DelayedCall(2f, () =>
-                {
-                    tempBook.DOKill();
-                    BookController.instance.ReturnToOriginalPosition(tempBook, true);
-                    tempBook.GetComponent<Book>().placed = false;
-                    tempBook.GetComponent<Collider>().enabled = true;
-                    
-                });
+                BookController.instance.PlayMissedParticle(bookPos + Vector3.up * 0.5f - Vector3.forward * 0.7f);
+                DOVirtual.DelayedCall(0.6f, () => BookController.instance.ReturnToOriginalPosition(bookTransform, true));
                 GameManager.instance.WrongShelf();
-                return currentPos;
-            }
-            else
-            {
-                //Wrong shelf!!!
-                Debug.Log("Wrong Shelf!!");
-                currentPos.x += (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
-                Transform tempBook = book.transform;
-                BookController.instance.PlaceBookOnShelf(book.transform, currentPos, true);
-                DOVirtual.DelayedCall(2f, () =>
-                {
-                    tempBook.DOKill();
-                    BookController.instance.ReturnToOriginalPosition(tempBook, true);
-                    tempBook.GetComponent<Book>().placed = false;
-                    tempBook.GetComponent<Collider>().enabled = true;
-                    WrongShelfPosCalculate(tempBook.GetComponent<Book>());
-                });
-                GameManager.instance.WrongShelf();
-                return currentPos;
-            }
-
+            });
         }
 
+        return true;
     }
-    public void WrongShelfPosCalculate(Book book)
-    {
-        currentPos.x -= (addedBooks[addedBooks.Count - 1].thickness * sizeCoefficient + book.thickness * sizeCoefficient) / 2;
 
-
-    }
 
 
 }

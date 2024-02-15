@@ -77,12 +77,11 @@ public class BookController : MonoBehaviour
                         PlayBookAnimation(selectedBook.transform);
                     }
 
-                    else if (hit.transform.TryGetComponent<DistanceCalculator>(out DistanceCalculator shelf) && selectedBook != null)
+                    else if (hit.transform.TryGetComponent<ShelfGrid>(out ShelfGrid shelfGrid) && selectedBook != null)
                     {
                         GameManager.instance.state = GameManager.GameState.Waiting;
-                        Vector3 bookPoint = shelf.AddPositionCalculate(selectedBook);
-                        selectedBook.GetComponent<Collider>().enabled = false;
-                        selectedBook = null;
+                        DistanceCalculator d = shelfGrid.shelf;
+                        bool bookPlaced = d.AddBook(selectedBook, shelfGrid);
                     }
                 }
             }

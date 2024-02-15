@@ -12,5 +12,4 @@ public class BookSettingsScriptableObject : ScriptableObject
 {
     public Genre Genre;
     public ColorOfBook ColorOfBook;
-    public GameObject[] PrefabOfBook;
 }
