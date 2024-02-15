@@ -4399,6 +4399,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.146
       objectReference: {fileID: 0}
+    - target: {fileID: 3285637724320422908, guid: 887e78d294c38b343b80d3fb0be933fc,
+        type: 3}
+      propertyPath: bookSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: a37acc21e18b1664488c2322766336fb,
+        type: 2}
     - target: {fileID: 6258228615722964592, guid: 887e78d294c38b343b80d3fb0be933fc,
         type: 3}
       propertyPath: shelfLength
@@ -4433,7 +4439,10 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7b9c804bd81f6b840a52a581511f0e34,
         type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 257391261251256094, guid: 887e78d294c38b343b80d3fb0be933fc, type: 3}
+    - {fileID: 2106915540883841860, guid: 887e78d294c38b343b80d3fb0be933fc, type: 3}
+    - {fileID: 1213807117668437057, guid: 887e78d294c38b343b80d3fb0be933fc, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 887e78d294c38b343b80d3fb0be933fc, type: 3}
