@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private Transform heartImage;
     [SerializeField] private List<Book> bookObjects = new List<Book>();
-    public string lastLevel;
+    public int savedIndex;
     public CanvasGroup winPanel;
     public CanvasGroup losePanel;
 
@@ -173,12 +173,13 @@ public class GameManager : MonoBehaviour
 
     public void GoNextLevel()
     {
-        SaveLastLevel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SaveLastLevel();
     }
 
     public void GoToMainMenu()
     {
+        SaveLastLevel();
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -189,22 +190,11 @@ public class GameManager : MonoBehaviour
 
     public void SaveLastLevel()
     {
-        lastLevel = SceneManager.GetActiveScene().name;
-        PlayerPrefs.SetString(lastLevel, lastLevel);
+        savedIndex= SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("Index", savedIndex);
+        Debug.Log("SavedIndex: " + savedIndex);
         PlayerPrefs.Save();
         Debug.Log("Saved!!!");
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
