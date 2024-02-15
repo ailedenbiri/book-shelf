@@ -9,11 +9,10 @@ using UnityEngine;
 
 public class DistanceCalculator : MonoBehaviour
 {
-    [SerializeField] public BookSettingsScriptableObject bookSettings;
-
     public int shelfLength = 8;
     public int gridCount = 8;
     List<ShelfGrid> grids = new List<ShelfGrid>();
+    [SerializeField] Genre[] gridGenres; 
     [SerializeField] int[] gridColors;
 
     public float sizeCoefficient;
@@ -28,7 +27,7 @@ public class DistanceCalculator : MonoBehaviour
         for (int i = 0; i < shelfLength; i++)
         {
             ShelfGrid g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.position + Vector3.right * 0.2f + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
-            g.genre = this.bookSettings.Genre;
+            g.genre = gridGenres[i];
             ColorOfBook color = ColorOfBook.Empty;
             switch (gridColors[i])
             {
@@ -44,6 +43,7 @@ public class DistanceCalculator : MonoBehaviour
                 default:
                     break;
             }
+
             g.color = color;
             g.shelf = this;
             grids.Add(g);
