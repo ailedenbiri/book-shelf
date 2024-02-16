@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2227842f96655fc45b2fb74841a2ebc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Genre: 0
-  ColorOfBook: 0
+  Genre: 3
+  ColorOfBook: 3
   thickness: 2
   placed: 0
   startPos: {x: 0, y: 0, z: 0}
