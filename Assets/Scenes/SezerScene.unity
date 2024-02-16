@@ -897,8 +897,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 10
-  bookSettings: {fileID: 0}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0
 --- !u!65 &1517826321
 BoxCollider:
