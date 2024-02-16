@@ -151,7 +151,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5058,7 +5058,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -9920,7 +9920,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -14778,7 +14778,7 @@ Transform:
   m_GameObject: {fileID: 4011160898597473952}
   serializedVersion: 2
   m_LocalRotation: {x: 0.056732073, y: -0, z: -0, w: 0.9983894}
-  m_LocalPosition: {x: -0.39, y: 3.04, z: -4.4}
+  m_LocalPosition: {x: 0, y: 3.04, z: -4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14935,7 +14935,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   heartImage: {fileID: 0}
   bookObjects: []
-  lastLevel: 
+  savedIndex: 0
   winPanel: {fileID: 0}
   losePanel: {fileID: 0}
   state: 0
