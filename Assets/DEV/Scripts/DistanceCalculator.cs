@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class DistanceCalculator : MonoBehaviour
@@ -12,7 +13,7 @@ public class DistanceCalculator : MonoBehaviour
     public int shelfLength = 8;
     public int gridCount = 8;
     List<ShelfGrid> grids = new List<ShelfGrid>();
-    [SerializeField] Genre[] gridGenres; 
+    [SerializeField] Genre[] gridGenres;
     [SerializeField] int[] gridColors;
 
     public float sizeCoefficient;
@@ -112,6 +113,31 @@ public class DistanceCalculator : MonoBehaviour
         }
 
         return true;
+    }
+
+    public Vector3 GetPos(int t, ShelfGrid grid)
+    {
+        List<ShelfGrid> bookReplacingGrids = new List<ShelfGrid>();
+        int gridStart = grids.IndexOf(grid);
+        for (int i = gridStart; i < gridStart + t; i++)
+        {
+            if (i == (grids.Count) || !grids[i].isEmpty)
+            {
+                GameManager.instance.state = GameManager.GameState.Playing;
+                return Vector3.zero;
+            }
+            bookReplacingGrids.Add(grids[i]);
+        }
+
+        Vector3 bookPos = Vector3.zero;
+        foreach (var item in bookReplacingGrids)
+        {
+            bookPos += item.transform.position;
+        }
+        bookPos /= bookReplacingGrids.Count;
+        bookPos.y = this.transform.position.y;
+
+        return bookPos;
     }
 
 

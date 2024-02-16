@@ -50,3 +50,10 @@ MonoBehaviour:
   - {r: 0.7921569, g: 0.30723625, b: 0.2509804, a: 0.64705884}
   - {r: 0.4293263, g: 0.2509804, b: 0.7921569, a: 0.64705884}
   - {r: 0.25044498, g: 0.7714455, b: 0.7924528, a: 0.64705884}
+  bookMaterialsTransparent:
+  - {fileID: 2100000, guid: e3c75e75b1d16ea47a47a631c9aa9557, type: 2}
+  - {fileID: 2100000, guid: 05ef8fec7a64688499633e197bf5018e, type: 2}
+  - {fileID: 2100000, guid: de2d0f6132e13fe4b9c4e30b26808129, type: 2}
+  - {fileID: 2100000, guid: 7a0b67e0ab26fbf42b20d5f56e9e0d55, type: 2}
+  - {fileID: 2100000, guid: 3a0d07213f1c13348a276a1910053a34, type: 2}
+  - {fileID: 2100000, guid: 284a1cc598b49e843b62809fdae4aabe, type: 2}
