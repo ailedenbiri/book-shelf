@@ -30,16 +30,18 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        if (PlayerPrefs.HasKey(GameManager.instance.lastLevel))
+        int savedIndex = PlayerPrefs.GetInt("Index"); 
+        Debug.Log(savedIndex + " index");
+        if (savedIndex != 0)
         {
             Debug.Log("Son level");
-            GameManager.instance.lastLevel = PlayerPrefs.GetString(GameManager.instance.lastLevel);
+            SceneManager.LoadScene(savedIndex);
         }
         else
         {
-            SceneManager.LoadScene($"LEVEL {PlayerPrefs.GetInt("SelectedLevel", 0) + 1}");
+            int selectedLevel = PlayerPrefs.GetInt("SelectedLevel", 0);
+            SceneManager.LoadScene(selectedLevel + 1);
         }
-        
     }
 }
 
