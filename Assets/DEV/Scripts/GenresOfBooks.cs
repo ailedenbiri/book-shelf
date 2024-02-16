@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public enum Genre { Love, Cowboy, Education, Noir, Health, SelfImprovement, ChildBook, Fantasy, Horror };
-public enum ColorOfBook { Red, Purple, Blue, Empty };
+public enum ColorOfBook { Red, Purple, Blue, Yellow, Green, Empty };
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/BookSettings")]
