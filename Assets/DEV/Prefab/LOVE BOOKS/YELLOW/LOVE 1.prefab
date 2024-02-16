@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4278760528671717599}
   - component: {fileID: 348491403198256513}
   - component: {fileID: 6732525853645660578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LOVE 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

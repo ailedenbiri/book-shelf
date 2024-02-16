@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2172614499010334041}
   - component: {fileID: -6495027852976365480}
   - component: {fileID: -5518772347173552393}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: COWBOY 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

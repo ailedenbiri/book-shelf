@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5872640830546784191}
   - component: {fileID: 1766248765560804628}
   - component: {fileID: 1982797589719464263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HORROR 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

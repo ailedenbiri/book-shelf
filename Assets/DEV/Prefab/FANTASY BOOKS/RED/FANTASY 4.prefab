@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7494765627227290645}
   - component: {fileID: 6769272402563048593}
   - component: {fileID: 202695706298628738}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FANTASY 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -16,6 +16,8 @@ public class BookController : MonoBehaviour
     [HideInInspector] public GameObject selectedBookTransparent = null;
     [HideInInspector] public ShelfGrid currentSelectedGrid = null;
 
+    private LayerMask gridLayer;
+
     private void Awake()
     {
         if (instance == null)
@@ -45,7 +47,7 @@ public class BookController : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Book")))
                 {
                     if (hit.transform.TryGetComponent(out Book bookTransform))
                     {
@@ -96,7 +98,7 @@ public class BookController : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Bookshelf")))
                 {
                     if (selectedBook != null)
                     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7588646575632499028}
   - component: {fileID: 248502128441523019}
   - component: {fileID: 5611124876075517031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NOIR 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
