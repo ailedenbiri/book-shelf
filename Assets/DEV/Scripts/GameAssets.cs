@@ -19,4 +19,6 @@ public class GameAssets : MonoBehaviour
 
     public Color[] bookColors;
 
+    public Material[] bookMaterialsTransparent;
+
 }

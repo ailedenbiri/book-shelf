@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6397515367617995631}
   - component: {fileID: -3448744871223809027}
   - component: {fileID: 5311240665999551476}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HORROR 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9184820131357232582}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 15709a51e1292664e87f9357313f2513, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

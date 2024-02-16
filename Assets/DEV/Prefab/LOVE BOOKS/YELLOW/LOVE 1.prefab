@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4278760528671717599}
   - component: {fileID: 348491403198256513}
   - component: {fileID: 6732525853645660578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LOVE 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4429542176213661691}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 15709a51e1292664e87f9357313f2513, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 5423840001639130990}
   - component: {fileID: -4274962739926140058}
   - component: {fileID: 310747163837743988}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid-Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

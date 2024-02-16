@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using Unity.Burst.CompilerServices;
+using UnityEditor.Experimental.GraphView;
 public class BookController : MonoBehaviour
 {
     public static BookController instance;
 
-    private Transform book;
-    [SerializeField] private ParticleSystem particleEffect;
-
+    [SerializeField] ParticleSystem particleEffect;
     [SerializeField] ParticleSystem missedParticle;
 
-
     public Book selectedBook;
+    [HideInInspector] public GameObject selectedBookTransparent = null;
+    [HideInInspector] public ShelfGrid currentSelectedGrid = null;
+
+    private LayerMask gridLayer;
 
     private void Awake()
     {
@@ -44,7 +47,7 @@ public class BookController : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Book")))
                 {
                     if (hit.transform.TryGetComponent(out Book bookTransform))
                     {
@@ -72,21 +75,82 @@ public class BookController : MonoBehaviour
                             return;
                         }
 
+                        if (selectedBookTransparent != null)
+                        {
+                            Destroy(selectedBookTransparent.gameObject);
+                            selectedBookTransparent = null;
+                        }
+
                         selectedBook = bookTransform;
+
+                        //Create transparent preview of selected book
+                        selectedBookTransparent = Instantiate(selectedBook.gameObject, Vector3.zero, Quaternion.Euler(new Vector3(0f, -180f, 0f)));
+                        selectedBookTransparent.transform.localScale = Vector3.zero;
+                        selectedBookTransparent.GetComponent<Renderer>().material = GameAssets.i.bookMaterialsTransparent[(int)selectedBook.ColorOfBook];
+                        selectedBookTransparent.GetComponent<Collider>().enabled = false;
+
                         GameManager.instance.state = GameManager.GameState.Waiting;
                         PlayBookAnimation(selectedBook.transform);
                     }
-
-                    else if (hit.transform.TryGetComponent<ShelfGrid>(out ShelfGrid shelfGrid) && selectedBook != null)
+                }
+            }
+            if (Input.GetMouseButton(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Bookshelf")))
+                {
+                    if (selectedBook != null)
                     {
-                        GameManager.instance.state = GameManager.GameState.Waiting;
-                        DistanceCalculator d = shelfGrid.shelf;
-                        bool bookPlaced = d.AddBook(selectedBook, shelfGrid);
+                        if (hit.transform.TryGetComponent<ShelfGrid>(out ShelfGrid g))
+                        {
+                            currentSelectedGrid = g;
+                            selectedBookTransparent.transform.localScale = selectedBook.transform.localScale;
+                            if (g.shelf.GetPos(selectedBook.thickness, g) != Vector3.zero)
+                            {
+                                selectedBookTransparent.transform.position = g.shelf.GetPos(selectedBook.thickness, g);
+                            }
+                            else
+                            {
+                                currentSelectedGrid = null;
+                                selectedBookTransparent.transform.localScale = Vector3.zero;
+                            }
+
+                        }
+                        else
+                        {
+                            currentSelectedGrid = null;
+                            selectedBookTransparent.transform.localScale = Vector3.zero;
+                        }
                     }
+
+                }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (currentSelectedGrid != null && selectedBook != null)
+                {
+                    GameManager.instance.state = GameManager.GameState.Waiting;
+                    DistanceCalculator d = currentSelectedGrid.shelf;
+                    bool bookPlaced = d.AddBook(selectedBook, currentSelectedGrid);
+                    Destroy(selectedBookTransparent.gameObject);
+                    selectedBookTransparent = null;
+                    currentSelectedGrid = null;
                 }
             }
         }
 
+    }
+
+    public void DropBookIfSelected()
+    {
+        if (selectedBook != null)
+        {
+            GameManager.instance.state = GameManager.GameState.Waiting;
+            ReturnToOriginalPosition(selectedBook.transform, true);
+            selectedBook = null;
+            return;
+        }
     }
 
 
@@ -102,37 +166,6 @@ public class BookController : MonoBehaviour
         {
             GameManager.instance.state = GameManager.GameState.Playing;
         });
-        /*bookTransform.DOMoveX(0.10f, 0.5f);
-        bookTransform.DOMoveY(0.5f, 0.5f);
-        bookTransform.DOMoveZ(0f, 0.5f).OnComplete(() =>
-        {
-            
-        });*/
-    }
-
-    public void PlaceBookOnShelf(Transform bookTransform, Vector3 targetPosition, bool missed = false)
-    {
-
-
-        bookTransform.DOKill();
-        //bookTransform.DOMove(targetPosition, 1.75f).SetEase(Ease.OutQuart);
-        //bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.75f).SetEase(Ease.InOutBack).OnComplete(() => PlayParticleEffect(bookTransform.position));
-
-        Sequence bookSeq = DOTween.Sequence();
-
-        bookSeq.Append(bookTransform.DOMove(targetPosition - Vector3.forward * 1f, 1.45f));
-        bookSeq.Join(bookTransform.DORotate(new Vector3(0f, -180f, 0f), 1.45f));
-        bookSeq.Append(bookTransform.DOMove(targetPosition, 0.3f));
-        if (!missed)
-        {
-            bookSeq.AppendCallback(() => PlayParticleEffect(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.5f, bookTransform.GetComponent<Book>()));
-        }
-        else
-        {
-            bookSeq.AppendCallback(() => PlayMissedParticle(targetPosition + Vector3.up * 0.5f - Vector3.forward * 0.7f));
-        }
-
-
     }
 
     public void ReturnToOriginalPosition(Transform bookTransform, bool unlockBooks = false)

@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public CanvasGroup winPanel;
     public CanvasGroup losePanel;
 
+    private int hintCount = 3;
+    private TextMeshProUGUI hintCountText;
+
     public enum GameState
     {
         Playing,
@@ -32,8 +35,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        Application.targetFrameRate = 60;
         state = GameState.Waiting;
+
+        //Camera animations at beginning
         Transform mainCam = Camera.main.transform;
         Transform cameraStartPos = GameObject.Find("CameraFirstPos").transform;
         Vector3 cameraTargetPos = mainCam.position;
@@ -44,32 +49,65 @@ public class GameManager : MonoBehaviour
         mainCam.DORotateQuaternion(cameraTargetRot, 1.2f).SetEase(Ease.InSine).OnComplete(() =>
         {
             state = GameState.Playing;
-            FadeShelfInfos();
         });
-        GameObject.Find("Button_Help").GetComponent<Button>().onClick.AddListener(FadeShelfInfos);
+
+        //ui elements settings
+        //main buttons
+        GameObject.Find("Button_Help").GetComponent<Button>().onClick.AddListener(GetHint);
         healthText = GameObject.Find("Text_HeartCount").GetComponent<TextMeshProUGUI>();
         healthText.text = health.ToString();
         heartImage = GameObject.Find("HealthBar").transform;
-
+        //hint count
+        hintCountText = GameObject.Find("HintCountText").GetComponent<TextMeshProUGUI>();
+        //game end panels
         winPanel = GameObject.Find("WinPanel").GetComponent<CanvasGroup>();
         losePanel = GameObject.Find("LosePanel").GetComponent<CanvasGroup>();
         winPanel.gameObject.SetActive(false);
         losePanel.gameObject.SetActive(false);
-        Application.targetFrameRate = 60;
         winPanel.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => GoNextLevel());
         losePanel.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RestartLevel());
         losePanel.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => GoToMainMenu());
+
         GetAllBooksInScene();
+
+        //add close hint listener to hint close button
+        for (int i = 1; i < 4; i++)
+        {
+            GameObject.Find("ShelfInfoCanvas").transform.GetChild(3 - i).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(CloseHint);
+        }
     }
 
-    public void FadeShelfInfos()
+    public void GetHint()
+    {
+        if (hintCount > 0)
+        {
+            BookController.instance.DropBookIfSelected();
+            Sequence seq = DOTween.Sequence();
+            CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(3 - hintCount).GetComponent<CanvasGroup>();
+            c.gameObject.SetActive(true);
+            c.DOKill();
+            seq.SetId(c);
+            seq.Append(c.DOFade(1f, 0.6f));
+            seq.AppendCallback(() => state = GameState.Waiting);
+
+        }
+    }
+
+    public void CloseHint()
     {
         Sequence seq = DOTween.Sequence();
-        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").GetComponent<CanvasGroup>();
+        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(3 - hintCount).GetComponent<CanvasGroup>();
         c.DOKill();
         seq.SetId(c);
-        seq.Append(c.DOFade(1f, 0.6f));
-        seq.Append(c.DOFade(0f, 0.6f).SetDelay(2f));
+        seq.Append(c.DOFade(0f, 0.6f));
+        seq.AppendCallback(() => c.gameObject.SetActive(false));
+        seq.AppendCallback(() => state = GameState.Playing);
+        hintCount--;
+        hintCountText.text = hintCount.ToString();
+        if (hintCount == 0)
+        {
+            hintCountText.transform.parent.parent.GetComponent<Button>().interactable = false;
+        }
     }
 
     public bool CountBooks()
@@ -190,7 +228,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveLastLevel()
     {
-        savedIndex= SceneManager.GetActiveScene().buildIndex;
+        savedIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("Index", savedIndex);
         Debug.Log("SavedIndex: " + savedIndex);
         PlayerPrefs.Save();

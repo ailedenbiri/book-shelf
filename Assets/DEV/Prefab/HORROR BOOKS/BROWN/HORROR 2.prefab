@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5872640830546784191}
   - component: {fileID: 1766248765560804628}
   - component: {fileID: 1982797589719464263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HORROR 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3289895104928068726}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 15709a51e1292664e87f9357313f2513, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
