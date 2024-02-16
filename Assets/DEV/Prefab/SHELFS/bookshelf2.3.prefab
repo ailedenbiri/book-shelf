@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -299,7 +299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 74de66fd1b891bb4fa487091f8850cba, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -385,7 +385,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -441,8 +441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
 --- !u!1 &2336345868816930930
 GameObject:
@@ -539,7 +540,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -595,8 +596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
 --- !u!1 &3376281341640014332
 GameObject:
@@ -662,7 +664,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -718,8 +720,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
 --- !u!1 &3550728776389690757
 GameObject:
@@ -785,7 +788,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -841,8 +844,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
 --- !u!1 &4949759691539636055
 GameObject:
@@ -970,7 +974,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1026,8 +1030,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
 --- !u!1 &5961172198120110194
 GameObject:
@@ -1155,7 +1160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1211,8 +1216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
 --- !u!1 &7235350007288622409
 GameObject:
@@ -1275,7 +1281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1361,7 +1367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: b2c1dfe2d45047746b23f45dcbf230d7, type: 3}
+  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1417,6 +1423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shelfLength: 20
-  bookSettings: {fileID: 11400000, guid: 6ab55b9979a18be42b202ed1e580e5ce, type: 2}
-  currentPos: {x: 0, y: 0, z: 0}
+  gridCount: 8
+  gridGenres: 
+  gridColors: 
   sizeCoefficient: 0.1
