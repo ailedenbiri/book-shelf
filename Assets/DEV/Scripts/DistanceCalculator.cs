@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class DistanceCalculator : MonoBehaviour
 {
+    [SerializeField] bool pivotOnMiddle = false;
+
     public int shelfLength = 8;
     public int gridCount = 8;
     List<ShelfGrid> grids = new List<ShelfGrid>();
@@ -25,12 +27,31 @@ public class DistanceCalculator : MonoBehaviour
 
     public void CreateGrids()
     {
-        for (int i = 0; i < shelfLength; i++)
+        float loopStartPoint = 0;
+        float loopEndPoint = shelfLength;
+        if (pivotOnMiddle)
         {
-            ShelfGrid g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.position + Vector3.right * 0.2f + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
-            g.genre = gridGenres[i];
+            loopStartPoint = (float)-(shelfLength - 1) / 2;
+            loopEndPoint = (float)shelfLength / 2;
+
+        }
+        int counter = 0;
+        float i = loopStartPoint;
+        while (i < loopEndPoint)
+        {
+            Debug.Log(i);
+            ShelfGrid g = null;
+            if (!pivotOnMiddle)
+            {
+                g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.position + Vector3.right * 0.2f + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
+            }
+            else
+            {
+                g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.GetComponent<Renderer>().bounds.center + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
+            }
+            g.genre = gridGenres[counter];
             ColorOfBook color = ColorOfBook.Empty;
-            switch (gridColors[i])
+            switch (gridColors[counter])
             {
                 case 1:
                     color = ColorOfBook.Red;
@@ -55,6 +76,9 @@ public class DistanceCalculator : MonoBehaviour
             g.shelf = this;
             grids.Add(g);
             g.UpdateColor();
+
+            counter++;
+            i += 1;
         }
     }
     public bool AddBook(Book book, ShelfGrid grid)

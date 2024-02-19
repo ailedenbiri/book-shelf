@@ -29,11 +29,10 @@ Transform:
   m_GameObject: {fileID: 581370629052350587}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.9976, z: 0.035}
-  m_LocalScale: {x: 108.472435, y: 4.820189, z: 39.045727}
+  m_LocalPosition: {x: 0.0097, y: 0.9976, z: 0.035}
+  m_LocalScale: {x: 106.51993, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4157836929988117576}
+  m_Children: []
   m_Father: {fileID: 6471817796419600024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8697618637732753508
@@ -103,7 +102,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.009999995, y: 0.08916322, z: 0.01}
   m_Center: {x: 0, y: 0.03958161, z: -3.4381406e-10}
@@ -119,11 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846f2b0f46e63ee40a714f87884b3401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelfLength: 20
-  gridCount: 8
-  gridGenres: 
-  gridColors: 
-  sizeCoefficient: 0.1
+  pivotOnMiddle: 1
+  shelfLength: 12
+  gridCount: 12
+  gridGenres: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  gridColors: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  sizeCoefficient: 0.19
 --- !u!1 &828720230903696177
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 3209777427390154099}
   - component: {fileID: 4195944188911375395}
   m_Layer: 0
-  m_Name: bookshelf4
+  m_Name: New - Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,9 +156,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 167770084822981157}
-  - {fileID: 2211537216433161367}
   - {fileID: 2058092230810433852}
-  - {fileID: 2405031083296061698}
   - {fileID: 7211836541925776796}
   - {fileID: 5239528546278458665}
   - {fileID: 5855404304826735445}
@@ -214,192 +212,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1347661073495489853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6773019617865528149}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6773019617865528149
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347661073495489853}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00492, y: 0.0003, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5855404304826735445}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2128314927253449223
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2211537216433161367}
-  - component: {fileID: 5082802473567632751}
-  - component: {fileID: 7312531313744989944}
-  - component: {fileID: 1107143753497185057}
-  - component: {fileID: 79217777031559667}
-  m_Layer: 0
-  m_Name: raf4 (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2211537216433161367
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128314927253449223}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.2497, y: 0.134, z: 0.035}
-  m_LocalScale: {x: 62.357334, y: 4.820189, z: 39.045727}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7112493589883623864}
-  m_Father: {fileID: 6471817796419600024}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5082802473567632751
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128314927253449223}
-  m_Mesh: {fileID: -7087271138916236341, guid: 7c49bd0173085634aa9c510ff60cc740, type: 3}
---- !u!23 &7312531313744989944
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128314927253449223}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1107143753497185057
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128314927253449223}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.009999995, y: 0.087534204, z: 0.01}
-  m_Center: {x: 0, y: 0.0387671, z: -3.4381406e-10}
---- !u!114 &79217777031559667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128314927253449223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846f2b0f46e63ee40a714f87884b3401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shelfLength: 20
-  gridCount: 8
-  gridGenres: 
-  gridColors: 
-  sizeCoefficient: 0.1
---- !u!1 &3257375035310460622
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3550523940755693829}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3550523940755693829
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3257375035310460622}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00473, y: 0.0025, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5239528546278458665}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3407642355312175807
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,11 +241,10 @@ Transform:
   m_GameObject: {fileID: 3407642355312175807}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.4294, z: 0.035}
-  m_LocalScale: {x: 108.472435, y: 4.820189, z: 39.045727}
+  m_LocalPosition: {x: 0.011, y: 1.4294, z: 0.035}
+  m_LocalScale: {x: 106.28129, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3550523940755693829}
+  m_Children: []
   m_Father: {fileID: 6471817796419600024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2576377146878809928
@@ -503,7 +314,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.009999995, y: 0.088803805, z: 0.01}
   m_Center: {x: 0, y: 0.03940189, z: -3.4381406e-10}
@@ -519,11 +330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846f2b0f46e63ee40a714f87884b3401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelfLength: 20
-  gridCount: 8
-  gridGenres: 
-  gridColors: 
-  sizeCoefficient: 0.1
+  pivotOnMiddle: 1
+  shelfLength: 12
+  gridCount: 12
+  gridGenres: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  gridColors: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  sizeCoefficient: 0.19
 --- !u!1 &3557558173748188967
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,11 +365,10 @@ Transform:
   m_GameObject: {fileID: 3557558173748188967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.5658, z: 0.035}
-  m_LocalScale: {x: 108.472435, y: 4.820189, z: 39.045727}
+  m_LocalPosition: {x: 0.011, y: 0.5658, z: 0.035}
+  m_LocalScale: {x: 106.28129, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6525619015624642295}
+  m_Children: []
   m_Father: {fileID: 6471817796419600024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &722925017019548528
@@ -627,7 +438,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.009999995, y: 0.088217266, z: 0.01}
   m_Center: {x: 0, y: 0.03910863, z: -3.4381406e-10}
@@ -643,157 +454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846f2b0f46e63ee40a714f87884b3401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelfLength: 20
-  gridCount: 8
-  gridGenres: 
-  gridColors: 
-  sizeCoefficient: 0.1
---- !u!1 &5054663510149548986
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2405031083296061698}
-  - component: {fileID: 5315021811672619188}
-  - component: {fileID: 5794221418676829384}
-  m_Layer: 0
-  m_Name: raf4 (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2405031083296061698
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054663510149548986}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
-  m_LocalPosition: {x: 0.0805, y: 0.349, z: 0.035}
-  m_LocalScale: {x: 45.772152, y: 4.820189, z: 39.045727}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 541053132707733848}
-  m_Father: {fileID: 6471817796419600024}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
---- !u!33 &5315021811672619188
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054663510149548986}
-  m_Mesh: {fileID: -7087271138916236341, guid: 7c49bd0173085634aa9c510ff60cc740, type: 3}
---- !u!23 &5794221418676829384
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054663510149548986}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 907efffefdde4fb42b3dd042b7031758, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &5187776107410051678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4157836929988117576}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4157836929988117576
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5187776107410051678}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00473, y: 0.0052, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7211836541925776796}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5205843011128965347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7481222768720863439}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7481222768720863439
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5205843011128965347}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00473, y: 0.0057, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 167770084822981157}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  pivotOnMiddle: 1
+  shelfLength: 12
+  gridCount: 12
+  gridGenres: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  gridColors: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  sizeCoefficient: 0.19
 --- !u!1 &5390087428959320066
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,11 +489,10 @@ Transform:
   m_GameObject: {fileID: 5390087428959320066}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.3002, y: 0.134, z: 0.035}
-  m_LocalScale: {x: 48.421688, y: 4.820189, z: 39.045727}
+  m_LocalPosition: {x: 0.0107, y: 0.134, z: 0.035}
+  m_LocalScale: {x: 106.33343, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7481222768720863439}
+  m_Children: []
   m_Father: {fileID: 6471817796419600024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8384846737197590543
@@ -897,7 +562,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.009999995, y: 0.087534204, z: 0.01}
   m_Center: {x: 0, y: 0.0387671, z: -3.4381406e-10}
@@ -913,42 +578,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846f2b0f46e63ee40a714f87884b3401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelfLength: 20
-  gridCount: 8
-  gridGenres: 
-  gridColors: 
-  sizeCoefficient: 0.1
---- !u!1 &6084117407404156944
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6525619015624642295}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6525619015624642295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6084117407404156944}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0047299997, y: 0.00624, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2058092230810433852}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  pivotOnMiddle: 1
+  shelfLength: 12
+  gridCount: 12
+  gridGenres: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  gridColors: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  sizeCoefficient: 0.19
 --- !u!1 &7373597166464164916
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,11 +613,10 @@ Transform:
   m_GameObject: {fileID: 7373597166464164916}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.8612, z: 0.035}
-  m_LocalScale: {x: 108.472435, y: 4.820189, z: 39.045727}
+  m_LocalPosition: {x: 0.0122, y: 1.8612, z: 0.035}
+  m_LocalScale: {x: 106.04265, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6773019617865528149}
+  m_Children: []
   m_Father: {fileID: 6471817796419600024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7048626289249408393
@@ -1052,7 +686,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.009999995, y: 0.08687879, z: 0.01}
   m_Center: {x: 0, y: 0.038439393, z: -3.4381406e-10}
@@ -1068,70 +702,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846f2b0f46e63ee40a714f87884b3401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shelfLength: 20
-  gridCount: 8
-  gridGenres: 
-  gridColors: 
-  sizeCoefficient: 0.1
---- !u!1 &7390216453714504262
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7112493589883623864}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7112493589883623864
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7390216453714504262}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00473, y: 0.0057, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2211537216433161367}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8246734630989455626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 541053132707733848}
-  m_Layer: 0
-  m_Name: BookPlacementPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &541053132707733848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8246734630989455626}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0047299997, y: 0.00624, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2405031083296061698}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  pivotOnMiddle: 1
+  shelfLength: 12
+  gridCount: 12
+  gridGenres: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  gridColors: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  sizeCoefficient: 0.19
