@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         yield return new WaitForEndOfFrame();
         
-        //level = PlayerPrefs.GetInt("SelectedLevel", 0); 
+        level = PlayerPrefs.GetInt("Index", 0); 
         
         levelsParent.DOAnchorPosX(-412.5f * level, 0f);
         levelsParent.transform.GetChild(level + 1).GetComponent<Image>().color = Color.yellow;

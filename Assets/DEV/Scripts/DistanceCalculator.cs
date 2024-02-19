@@ -41,6 +41,12 @@ public class DistanceCalculator : MonoBehaviour
                 case 3:
                     color = ColorOfBook.Blue;
                     break;
+                case 4:
+                    color = ColorOfBook.Yellow;
+                    break;
+                case 5:
+                    color = ColorOfBook.Green;
+                    break;
                 default:
                     break;
             }
@@ -65,7 +71,7 @@ public class DistanceCalculator : MonoBehaviour
             bookReplacingGrids.Add(grids[i]);
         }
 
-        bool replaced = bookReplacingGrids.All(x => (x.color == book.ColorOfBook && x.genre == book.Genre) || (x.color == ColorOfBook.Empty && x.genre == book.Genre));
+        bool replaced = bookReplacingGrids.All(x => (x.color == book.ColorOfBook && x.genre == book.Genre));
 
         Vector3 bookPos = Vector3.zero;
         foreach (var item in bookReplacingGrids)

@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         mainCam.DOMove(cameraTargetPos, 1.2f).SetEase(Ease.InSine);
         mainCam.DORotateQuaternion(cameraTargetRot, 1.2f).SetEase(Ease.InSine).OnComplete(() =>
         {
+            GetHint();
             state = GameState.Playing;
         });
 
@@ -71,10 +72,7 @@ public class GameManager : MonoBehaviour
         GetAllBooksInScene();
 
         //add close hint listener to hint close button
-        for (int i = 1; i < 4; i++)
-        {
-            GameObject.Find("ShelfInfoCanvas").transform.GetChild(3 - i).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(CloseHint);
-        }
+        GameObject.Find("ShelfInfoCanvas").transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(CloseHint);
     }
 
     public void GetHint()
@@ -83,7 +81,7 @@ public class GameManager : MonoBehaviour
         {
             BookController.instance.DropBookIfSelected();
             Sequence seq = DOTween.Sequence();
-            CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(3 - hintCount).GetComponent<CanvasGroup>();
+            CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(0).GetComponent<CanvasGroup>();
             c.gameObject.SetActive(true);
             c.DOKill();
             seq.SetId(c);
@@ -96,7 +94,7 @@ public class GameManager : MonoBehaviour
     public void CloseHint()
     {
         Sequence seq = DOTween.Sequence();
-        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(3 - hintCount).GetComponent<CanvasGroup>();
+        CanvasGroup c = GameObject.Find("ShelfInfoCanvas").transform.GetChild(0).GetComponent<CanvasGroup>();
         c.DOKill();
         seq.SetId(c);
         seq.Append(c.DOFade(0f, 0.6f));
@@ -180,6 +178,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         state = GameState.Waiting;
+        SaveLastLevel();
         DOVirtual.DelayedCall(3f, () =>
         {
             winPanel.gameObject.SetActive(true);
@@ -212,12 +211,10 @@ public class GameManager : MonoBehaviour
     public void GoNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SaveLastLevel();
     }
 
     public void GoToMainMenu()
-    {
-        SaveLastLevel();
+    {;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -229,7 +226,7 @@ public class GameManager : MonoBehaviour
     public void SaveLastLevel()
     {
         savedIndex = SceneManager.GetActiveScene().buildIndex;
-        PlayerPrefs.SetInt("Index", savedIndex);
+        PlayerPrefs.SetInt("Index", savedIndex + 1);
         Debug.Log("SavedIndex: " + savedIndex);
         PlayerPrefs.Save();
         Debug.Log("Saved!!!");
