@@ -13,6 +13,6 @@ public class ShelfGrid : MonoBehaviour
 
     public void UpdateColor()
     {
-        if (color != ColorOfBook.Empty) transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = GameAssets.i.bookColors[(int)this.color];
+       //  if (color != ColorOfBook.Empty) transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().color = GameAssets.i.bookColors[(int)this.color];
     }
 }
