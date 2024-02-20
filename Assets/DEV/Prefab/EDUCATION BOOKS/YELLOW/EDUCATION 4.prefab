@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8029106436701015612}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.48974, y: 0.007885001, z: 0.009574146}
   m_LocalScale: {x: 2.7, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2227842f96655fc45b2fb74841a2ebc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Genre: 0
-  ColorOfBook: 0
+  Genre: 2
+  ColorOfBook: 3
   thickness: 3
   placed: 0
   startPos: {x: 0, y: 0, z: 0}
