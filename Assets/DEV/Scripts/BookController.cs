@@ -93,6 +93,7 @@ public class BookController : MonoBehaviour
                         PlayBookAnimation(selectedBook.transform);
                     }
                 }
+                return;
             }
             if (Input.GetMouseButton(0))
             {
