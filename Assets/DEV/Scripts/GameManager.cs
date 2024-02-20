@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public CanvasGroup winPanel;
     public CanvasGroup losePanel;
 
-    private int hintCount = 3;
+    private int hintCount = 4;
     private TextMeshProUGUI hintCountText;
 
     public enum GameState
