@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         mainCam.DOMove(cameraTargetPos, 1.2f).SetEase(Ease.InSine);
         mainCam.DORotateQuaternion(cameraTargetRot, 1.2f).SetEase(Ease.InSine).OnComplete(() =>
         {
-            GetHint();
+            //GetHint();
             state = GameState.Playing;
         });
 
@@ -214,7 +214,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void GoToMainMenu()
-    {;
+    {
+        ;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -225,7 +226,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveLastLevel()
     {
-        savedIndex = SceneManager.GetActiveScene().buildIndex;
+        savedIndex = SceneManager.GetActiveScene().buildIndex - 1;
         PlayerPrefs.SetInt("Index", savedIndex + 1);
         Debug.Log("SavedIndex: " + savedIndex);
         PlayerPrefs.Save();

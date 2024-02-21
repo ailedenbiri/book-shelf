@@ -99,10 +99,11 @@ public class BookController : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Bookshelf")))
+                if (selectedBook != null)
                 {
-                    if (selectedBook != null)
+                    if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Bookshelf")))
                     {
+
                         if (hit.transform.TryGetComponent<ShelfGrid>(out ShelfGrid g))
                         {
                             currentSelectedGrid = g;
@@ -124,8 +125,14 @@ public class BookController : MonoBehaviour
                             selectedBookTransparent.transform.localScale = Vector3.zero;
                         }
                     }
+                    else
+                    {
+                        currentSelectedGrid = null;
+                        selectedBookTransparent.transform.localScale = Vector3.zero;
+                    }
 
                 }
+
             }
             if (Input.GetMouseButtonUp(0))
             {
