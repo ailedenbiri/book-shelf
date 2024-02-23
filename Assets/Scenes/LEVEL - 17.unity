@@ -1102,12 +1102,12 @@ PrefabInstance:
     - target: {fileID: 8110733099311079309, guid: 8f99ed2d84a3f404b9fd496f1d39cd8d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3062644
+      value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 8110733099311079309, guid: 8f99ed2d84a3f404b9fd496f1d39cd8d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2856255
+      value: 3.16
       objectReference: {fileID: 0}
     - target: {fileID: 8110733099311079309, guid: 8f99ed2d84a3f404b9fd496f1d39cd8d,
         type: 3}
@@ -1847,7 +1847,7 @@ PrefabInstance:
     - target: {fileID: 2142020783858850139, guid: 339f5cc9aabfd17479e7e80d0baef013,
         type: 3}
       propertyPath: gridColors.Array.data[10]
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2142020783858850139, guid: 339f5cc9aabfd17479e7e80d0baef013,
         type: 3}
