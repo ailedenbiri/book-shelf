@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
         {
             if (item.GetComponentInChildren<TextMeshProUGUI>() != null)
             {
+                item.name = "LevelButton - " + item.GetSiblingIndex().ToString();
                 item.GetComponentInChildren<TextMeshProUGUI>().text = item.GetSiblingIndex().ToString();
             }
         }
