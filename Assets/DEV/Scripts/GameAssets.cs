@@ -21,4 +21,7 @@ public class GameAssets : MonoBehaviour
 
     public Material[] bookMaterialsTransparent;
 
+    public GameObject[] pfLabels;
+
+    public Sprite[] genreSprites;
 }

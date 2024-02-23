@@ -59,3 +59,17 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7a0b67e0ab26fbf42b20d5f56e9e0d55, type: 2}
   - {fileID: 2100000, guid: 3a0d07213f1c13348a276a1910053a34, type: 2}
   - {fileID: 2100000, guid: 284a1cc598b49e843b62809fdae4aabe, type: 2}
+  pfLabels:
+  - {fileID: 9205184482658501181, guid: cf2bcbd28e88a3f49b6aaffcc1310c54, type: 3}
+  - {fileID: 3164537446486735875, guid: 39ff51c7db07969499dabfb4c4a847d5, type: 3}
+  - {fileID: 8799360234428327894, guid: e9d86ff2c373cb04d8429ed486956adf, type: 3}
+  genreSprites:
+  - {fileID: 21300000, guid: 5beb8075bb7738e4189195931c1e0de1, type: 3}
+  - {fileID: 21300000, guid: 53c2e6b0e95b7844d903b232c11c6de5, type: 3}
+  - {fileID: 21300000, guid: 099a03cc4b26b80468d2080657979afb, type: 3}
+  - {fileID: 21300000, guid: 1a1dcb521b3b22a43a65923be3a479f8, type: 3}
+  - {fileID: 21300000, guid: d7b8d06e821999444a58f7a75802ab9c, type: 3}
+  - {fileID: 21300000, guid: ffba094746caf33429ca13af0300e533, type: 3}
+  - {fileID: 21300000, guid: b53f2a7547360be4dad2406a1758e05e, type: 3}
+  - {fileID: 21300000, guid: 3df9a0532ccd79443b624673c609c75f, type: 3}
+  - {fileID: 21300000, guid: 6f1ea483d162dd9469163d57e7e7337c, type: 3}
