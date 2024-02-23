@@ -10,15 +10,15 @@ public class MainMenu : MonoBehaviour
 {
     public RectTransform levelsParent;
     private int level;
- 
+
     IEnumerator Start()
     {
         Time.timeScale = 1f;
         yield return new WaitForEndOfFrame();
-        
-        level = PlayerPrefs.GetInt("Index", 0); 
-        
-        levelsParent.DOAnchorPosX(-412.5f * level, 0f);
+
+        level = PlayerPrefs.GetInt("Index", 0);
+
+        levelsParent.DOAnchorPosX(-180f + (-435 * level), 0f);
         levelsParent.transform.GetChild(level + 1).GetComponent<Image>().color = Color.yellow;
         foreach (Transform item in levelsParent.transform)
         {
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        int savedIndex = PlayerPrefs.GetInt("Index"); 
+        int savedIndex = PlayerPrefs.GetInt("Index");
         Debug.Log(savedIndex + " index");
         if (savedIndex != 0)
         {
