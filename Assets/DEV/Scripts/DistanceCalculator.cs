@@ -80,6 +80,7 @@ public class DistanceCalculator : MonoBehaviour
             counter++;
             i += 1;
         }
+        SetupLabels();
     }
     public bool AddBook(Book book, ShelfGrid grid)
     {
@@ -168,6 +169,54 @@ public class DistanceCalculator : MonoBehaviour
         bookPos.y = this.transform.position.y;
 
         return bookPos;
+    }
+
+    public void SetupLabels()
+    {
+        List<Genre> genreList = new List<Genre>(gridGenres);
+        List<Genre> genreListDifferent = genreList.Distinct().ToList();
+        genreListDifferent.RemoveAll(x => x == Genre.Blank);
+        List<int> genreCounts = new List<int>();
+        for (int i = 0; i < genreListDifferent.Count; i++)
+        {
+            genreCounts.Add(genreList.Count(x => x == genreListDifferent[i]));
+        }
+
+        GameObject g = Instantiate(GameAssets.i.pfLabels[genreListDifferent.Count - 1], FindLabelCoords(GetComponent<MeshFilter>(), genreListDifferent.Count),
+            GameAssets.i.pfLabels[genreListDifferent.Count - 1].transform.rotation);
+        if (genreListDifferent.Count > 0)
+        {
+            g.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = GameAssets.i.genreSprites[(int)genreListDifferent[0]];
+            g.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>().text = "x" + genreCounts[0];
+        }
+        if (genreListDifferent.Count > 1)
+        {
+            g.transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().sprite = GameAssets.i.genreSprites[(int)genreListDifferent[1]];
+            g.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<TextMeshPro>().text = "x" + genreCounts[1];
+        }
+        if (genreListDifferent.Count > 2)
+        {
+            g.transform.GetChild(0).GetChild(2).GetComponent<SpriteRenderer>().sprite = GameAssets.i.genreSprites[(int)genreListDifferent[2]];
+            g.transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<TextMeshPro>().text = "x" + genreCounts[2];
+        }
+    }
+
+    public Vector3 FindLabelCoords(MeshFilter renderer, int offsetCount)
+    {
+        Matrix4x4 localToWorld = transform.localToWorldMatrix;
+        float x = float.MaxValue, y = float.MaxValue, z = float.MaxValue;
+        for (int i = 0; i < renderer.mesh.vertices.Length; i++)
+        {
+            Vector3 pos = localToWorld.MultiplyPoint3x4(renderer.mesh.vertices[i]);
+            if (pos.x < x) x = pos.x;
+            if (pos.y < y) y = pos.y;
+            if (pos.z < z) z = pos.z;
+        }
+        z -= 0.05f;
+        y += 0.25f;
+        float[] offsets = { -0.217288f, -0.325304f, -0.462556f };
+        x += offsets[offsetCount - 1];
+        return new Vector3(x, y, z);
     }
 
 
