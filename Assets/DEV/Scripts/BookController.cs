@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
-using Unity.Burst.CompilerServices;
-using UnityEditor.Experimental.GraphView;
 public class BookController : MonoBehaviour
 {
     public static BookController instance;

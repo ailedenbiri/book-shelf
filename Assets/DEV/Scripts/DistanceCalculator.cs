@@ -47,7 +47,7 @@ public class DistanceCalculator : MonoBehaviour
             }
             else
             {
-                g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.GetComponent<Renderer>().bounds.center + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
+                g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.GetComponent<Renderer>().bounds.center+ (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
             }
             g.genre = gridGenres[counter];
             ColorOfBook color = ColorOfBook.Empty;
@@ -104,7 +104,7 @@ public class DistanceCalculator : MonoBehaviour
             bookPos += item.transform.position;
         }
         bookPos /= bookReplacingGrids.Count;
-        bookPos.y = this.transform.position.y;
+        bookPos.y = this.transform.position.y + 0.05f;
 
         //BOOK REPLACING
         Transform bookTransform = book.transform;
@@ -131,6 +131,7 @@ public class DistanceCalculator : MonoBehaviour
                     item.isEmpty = false;
                 }
                 GameManager.instance.CountBooks();
+                GameManager.instance.UnlockBooks();
             });
         }
         else
@@ -166,7 +167,7 @@ public class DistanceCalculator : MonoBehaviour
             bookPos += item.transform.position;
         }
         bookPos /= bookReplacingGrids.Count;
-        bookPos.y = this.transform.position.y;
+        bookPos.y = this.transform.position.y + 0.05f;
 
         return bookPos;
     }

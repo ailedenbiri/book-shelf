@@ -54,12 +54,9 @@ public class GameManager : MonoBehaviour
 
         //ui elements settings
         //main buttons
-        GameObject.Find("Button_Help").GetComponent<Button>().onClick.AddListener(GetHint);
         healthText = GameObject.Find("Text_HeartCount").GetComponent<TextMeshProUGUI>();
         healthText.text = health.ToString();
         heartImage = GameObject.Find("HealthBar").transform;
-        //hint count
-        hintCountText = GameObject.Find("HintCountText").GetComponent<TextMeshProUGUI>();
         //game end panels
         winPanel = GameObject.Find("WinPanel").GetComponent<CanvasGroup>();
         losePanel = GameObject.Find("LosePanel").GetComponent<CanvasGroup>();
