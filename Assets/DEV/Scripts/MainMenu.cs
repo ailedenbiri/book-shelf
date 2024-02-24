@@ -18,12 +18,13 @@ public class MainMenu : MonoBehaviour
 
         level = PlayerPrefs.GetInt("Index", 0);
 
-        levelsParent.DOAnchorPosX(-180f + (-435 * level), 0f);
+        levelsParent.DOAnchorPosX(-180f + (-435 * (level)), 0f);
         levelsParent.transform.GetChild(level + 1).GetComponent<Image>().color = Color.yellow;
         foreach (Transform item in levelsParent.transform)
         {
             if (item.GetComponentInChildren<TextMeshProUGUI>() != null)
             {
+                item.name = "LevelButton - " + item.GetSiblingIndex().ToString();
                 item.GetComponentInChildren<TextMeshProUGUI>().text = item.GetSiblingIndex().ToString();
             }
         }
@@ -35,12 +36,11 @@ public class MainMenu : MonoBehaviour
         if (savedIndex != 0)
         {
             Debug.Log("Son level");
-            SceneManager.LoadScene(savedIndex);
+            SceneManager.LoadScene(savedIndex + 1);
         }
         else
         {
-            int selectedLevel = PlayerPrefs.GetInt("SelectedLevel", 0);
-            SceneManager.LoadScene(selectedLevel + 1);
+            SceneManager.LoadScene("LEVEL - 1");
         }
     }
 }

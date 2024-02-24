@@ -54,12 +54,9 @@ public class GameManager : MonoBehaviour
 
         //ui elements settings
         //main buttons
-        GameObject.Find("Button_Help").GetComponent<Button>().onClick.AddListener(GetHint);
         healthText = GameObject.Find("Text_HeartCount").GetComponent<TextMeshProUGUI>();
         healthText.text = health.ToString();
         heartImage = GameObject.Find("HealthBar").transform;
-        //hint count
-        hintCountText = GameObject.Find("HintCountText").GetComponent<TextMeshProUGUI>();
         //game end panels
         winPanel = GameObject.Find("WinPanel").GetComponent<CanvasGroup>();
         losePanel = GameObject.Find("LosePanel").GetComponent<CanvasGroup>();
@@ -71,8 +68,8 @@ public class GameManager : MonoBehaviour
 
         GetAllBooksInScene();
 
-        //add close hint listener to hint close button
-        GameObject.Find("ShelfInfoCanvas").transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<Button>().onClick.AddListener(CloseHint);
+        //add go home listener to button
+        GameObject.Find("Button_Home").GetComponent<Button>().onClick.AddListener(GoToMainMenu);
     }
 
     public void GetHint()
@@ -226,7 +223,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveLastLevel()
     {
-        savedIndex = SceneManager.GetActiveScene().buildIndex - 1;
+        savedIndex = PlayerPrefs.GetInt("Index", 0);
         PlayerPrefs.SetInt("Index", savedIndex + 1);
         Debug.Log("SavedIndex: " + savedIndex);
         PlayerPrefs.Save();
