@@ -36,7 +36,15 @@ public class MainMenu : MonoBehaviour
         if (savedIndex != 0)
         {
             Debug.Log("Son level");
-            SceneManager.LoadScene(savedIndex + 1);
+            if (savedIndex + 1 > 20)
+            {
+                SceneManager.LoadScene("LEVEL - " + Random.Range(5,21).ToString());
+            }
+            else
+            {
+                SceneManager.LoadScene(savedIndex + 1);
+            }
+            
         }
         else
         {
