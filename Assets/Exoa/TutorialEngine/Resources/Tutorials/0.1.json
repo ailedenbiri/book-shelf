@@ -1,0 +1,11 @@
+﻿{
+    "tutorial_steps": [
+        {
+            "text": "First select a book!",
+            "target_obj": "OnboardingBook",
+            "sendMessage": "",
+            "isClickable": false,
+            "isReplacingNextButton": false
+        }
+    ]
+}

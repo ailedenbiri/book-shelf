@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Exoa.TutorialEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private int hintCount = 4;
     private TextMeshProUGUI hintCountText;
-
+    [HideInInspector] public int shelfc;
     public enum GameState
     {
         Playing,
@@ -66,10 +67,26 @@ public class GameManager : MonoBehaviour
         losePanel.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => RestartLevel());
         losePanel.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => GoToMainMenu());
 
+        GameObject.Find("Button_Restart").GetComponent<Button>().onClick.AddListener(RestartLevel);
+        GameObject.Find("Button_GoNextForce").GetComponent<Button>().onClick.AddListener(GoNextLevelForced);
+
         GetAllBooksInScene();
 
         //add go home listener to button
         GameObject.Find("Button_Home").GetComponent<Button>().onClick.AddListener(GoToMainMenu);
+
+        if (SceneManager.GetActiveScene().name == "LEVEL - 1")
+        {
+            TutorialLoader.instance.Load("0.1");
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                foreach (var item in GameObject.FindObjectsOfType<ShelfGrid>())
+                {
+                    item.GetComponent<BoxCollider>().enabled = false;
+                }
+                GameObject.Find("Empty ChildBook 0").GetComponent<BoxCollider>().enabled = true;
+            });
+        }
     }
 
     public void GetHint()
@@ -212,8 +229,14 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        ;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void GoNextLevelForced()
+    {
+        savedIndex = PlayerPrefs.GetInt("Index", 0);
+        PlayerPrefs.SetInt("Index", savedIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void RestartLevel()

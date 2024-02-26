@@ -40,7 +40,7 @@ public class DistanceCalculator : MonoBehaviour
         while (i < loopEndPoint)
         {
             Debug.Log(i);
-            ShelfGrid g = null;
+            ShelfGrid g;
             if (!pivotOnMiddle)
             {
                 g = Instantiate(GameAssets.i.pfShelfGrid, this.transform.position + Vector3.right * 0.2f + (i * sizeCoefficient * Vector3.right), GameAssets.i.pfShelfGrid.transform.rotation);
@@ -130,6 +130,7 @@ public class DistanceCalculator : MonoBehaviour
                 {
                     item.isEmpty = false;
                 }
+                Taptic.Medium();
                 GameManager.instance.CountBooks();
                 GameManager.instance.UnlockBooks();
             });

@@ -1,0 +1,39 @@
+﻿{
+    "tutorial_steps": [
+        {
+            "text": "You can see the book's genre in front side of it.",
+            "target_obj": "OnboardingBook",
+            "sendMessage": "",
+            "isClickable": false,
+            "isReplacingNextButton": false
+        },
+        {
+            "text": "This text shows thickness of the book.",
+            "target_obj": "Onb-Th",
+            "sendMessage": "",
+            "isClickable": false,
+            "isReplacingNextButton": false
+        },
+        {
+            "text": "There is labels on each shelf showing which book should be placed there.",
+            "target_obj": "Label - 1(Clone)",
+            "sendMessage": "",
+            "isClickable": false,
+            "isReplacingNextButton": false
+        },
+        {
+            "text": "This text shows how many thickness of that type should be placed.",
+            "target_obj": "Onb-Th2",
+            "sendMessage": "",
+            "isClickable": false,
+            "isReplacingNextButton": false
+        },
+        {
+            "text": "Hold to adjust position and release to place the book.",
+            "target_obj": "Empty ChildBook 0",
+            "sendMessage": "",
+            "isClickable": false,
+            "isReplacingNextButton": false
+        }
+    ]
+}
