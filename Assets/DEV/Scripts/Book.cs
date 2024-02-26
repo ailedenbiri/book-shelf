@@ -8,11 +8,16 @@ public class Book : MonoBehaviour
     public ColorOfBook ColorOfBook;
     public int thickness;
 
-    [HideInInspector]public bool placed;
+    [HideInInspector] public bool placed;
 
 
-    [HideInInspector]public Vector3 startPos;
-    [HideInInspector]public Quaternion startRot;
+    [HideInInspector] public Vector3 startPos;
+    [HideInInspector] public Quaternion startRot;
+
+    private void Start()
+    {
+        GameAssets.i.AddSpriteToBook(this);
+    }
 
     public void UpdatePositions()
     {

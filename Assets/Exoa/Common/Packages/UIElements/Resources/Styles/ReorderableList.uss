@@ -1,0 +1,21 @@
+﻿.unity-reorderable-list__header {
+	margin: 2px 0 1px 0;
+	padding: 4px;
+}
+.unity-reorderable-list__footer {
+	margin: 1px 0 2px 0;
+	height: 10px;
+}
+.unity-reorderable-list__single {
+	margin: 2px 0 2px 0;
+}
+.unity-reorderable-list__handle {
+	padding: 4px;
+}
+.unity-reorderable-list__item {
+	margin: -2px 0 -2px 0;
+}
+
+.unity-reorderable-list__add, .unity-reorderable-list__remove {
+	border-width: 0;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd"
+>
+
+    <engine:Header style="min-height:60px;">
+         <engine:H2 text="Tutorials Manager" name="pageTitle" />
+    </engine:Header>
+
+
+    <engine:Div>
+
+    </engine:Div>
+
+
+<engine:Div class="row" style="height:35px;min-height:35px;">
+       
+        <engine:Div class="col-sm-10">
+            <engine:Div name="popupDiv"></engine:Div>
+        </engine:Div>
+        <engine:Div class="col-sm-2">
+            <engine:Button class="list" text="Edit" name="editBtn" />
+        </engine:Div>
+    </engine:Div>
+
+
+    <engine:Main name="mainPage" >
+   
+        <engine:ScrollView class="container">
+            <editor:ReorderableList  name="tutorialsList" />
+            
+        
+        </engine:ScrollView>
+
+        <engine:Button class=" info" text="Add New Step" name="addNewStepBtn"  />
+        <engine:Button class="success" name="saveTutorialBtn" text="Save" />
+
+
+        <engine:H3  text="           " />
+        <engine:H3  text="           " />
+        <engine:Label  text="Create a new tutorial" />
+        <engine:TextField name="newTutorialName" label="Tutorial File Name" />
+        <engine:Button class="info" name="createTutorialBtn" text="Create Tutorial" />
+    </engine:Main>
+
+
+
+
+
+
+</engine:UXML>

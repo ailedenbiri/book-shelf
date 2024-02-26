@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using Exoa.TutorialEngine;
+using UnityEngine.SceneManagement;
+
 public class BookController : MonoBehaviour
 {
     public static BookController instance;
@@ -40,6 +43,12 @@ public class BookController : MonoBehaviour
     {
         if (GameManager.instance.state == GameManager.GameState.Playing)
         {
+            if (TutorialController.IsTutorialActive && selectedBook != null)
+            {
+                Debug.Log("RETURNED");
+
+                return;
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -47,8 +56,31 @@ public class BookController : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Book")))
                 {
+                    if (TutorialController.IsTutorialActive && hit.collider.gameObject.name != "OnboardingBook")
+                    {
+                        Debug.Log("RETURNED");
+
+                        return;
+                    }
+                    else if (TutorialController.IsTutorialActive && hit.collider.gameObject.name == "OnboardingBook" && selectedBook != null)
+                    {
+                        Debug.Log("RETURNED");
+
+                        return;
+                    }
+                    else if (TutorialController.IsTutorialActive && hit.collider.gameObject.name == "OnboardingBook" && selectedBook == null)
+                    {
+                        TutorialLoader.instance.Load("0.2");
+                        DOVirtual.DelayedCall(3f, () => TutorialPopup.instance.OpenNextBtn());
+                    }
                     if (hit.transform.TryGetComponent(out Book bookTransform))
                     {
+                        if (SceneManager.GetActiveScene().name == "LEVEL - 1" && GameObject.Find("OnboardingBook").GetComponent<Book>().placed == false && selectedBook != null)
+                        {
+                            Debug.Log("RETURNED");
+
+                            return;
+                        }
                         if (selectedBook != null)
                         {
                             if (selectedBook == bookTransform)
@@ -104,6 +136,10 @@ public class BookController : MonoBehaviour
 
                         if (hit.transform.TryGetComponent<ShelfGrid>(out ShelfGrid g))
                         {
+                            if (g != currentSelectedGrid)
+                            {
+                                Taptic.Light();
+                            }
                             currentSelectedGrid = g;
                             selectedBookTransparent.transform.localScale = selectedBook.transform.localScale;
                             if (g.shelf.GetPos(selectedBook.thickness, g) != Vector3.zero)
@@ -136,6 +172,13 @@ public class BookController : MonoBehaviour
             {
                 if (currentSelectedGrid != null && selectedBook != null)
                 {
+                    if (selectedBook.name == "OnboardingBook")
+                    {
+                        foreach (var item in GameObject.FindObjectsOfType<ShelfGrid>())
+                        {
+                            item.GetComponent<BoxCollider>().enabled = true;
+                        }
+                    }
                     GameManager.instance.state = GameManager.GameState.Waiting;
                     DistanceCalculator d = currentSelectedGrid.shelf;
                     bool bookPlaced = d.AddBook(selectedBook, currentSelectedGrid);
