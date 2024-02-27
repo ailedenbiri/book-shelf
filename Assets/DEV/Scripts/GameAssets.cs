@@ -26,7 +26,7 @@ public class GameAssets : MonoBehaviour
     public Sprite[] genreSprites;
 
     public SpriteRenderer pfBookSprite;
-    private Vector3[] bookSpriteScales = { new Vector3(0.0025f, 0.005f, 0.01f), new Vector3(0.005f, 0.0075f, 0.01f), new Vector3(0.0066f, 0.01f, 0.01f) };
+    private Vector3[] bookSpriteScales = { new Vector3(0.0015f, 0.0035f, 0.01f), new Vector3(0.0035f, 0.0075f, 0.01f), new Vector3(0.0066f, 0.01f, 0.01f) };
 
     public void AddSpriteToBook(Book b)
     {
