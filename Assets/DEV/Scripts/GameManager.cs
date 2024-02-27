@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
         GameObject.Find("Button_Restart").GetComponent<Button>().onClick.AddListener(RestartLevel);
         GameObject.Find("Button_GoNextForce").GetComponent<Button>().onClick.AddListener(GoNextLevelForced);
+        GameObject.Find("Text_Level").GetComponent<TextMeshProUGUI>().text = "Level " + (PlayerPrefs.GetInt("Index") + 1).ToString();
 
         GetAllBooksInScene();
 
