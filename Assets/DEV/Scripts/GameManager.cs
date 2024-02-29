@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour
         {
             //GetHint();
             state = GameState.Playing;
+            if (SceneManager.GetActiveScene().name == "LEVEL - 1")
+            {
+                MTutorialController.instance.LoadTutorial("T-1", 0.3f, -1);
+            }
         });
 
         //ui elements settings
@@ -78,14 +82,12 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "LEVEL - 1")
         {
-            TutorialLoader.instance.Load("0.1");
             DOVirtual.DelayedCall(1f, () =>
             {
                 foreach (var item in GameObject.FindObjectsOfType<ShelfGrid>())
                 {
                     item.GetComponent<BoxCollider>().enabled = false;
                 }
-                GameObject.Find("Empty ChildBook 0").GetComponent<BoxCollider>().enabled = true;
             });
         }
     }
