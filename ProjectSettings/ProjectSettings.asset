@@ -257,7 +257,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/esnigus/Desktop/Esnigus/bookshelf.keystore
+  AndroidKeystoreName: C:/Users/esnigus/Desktop/openssl/bin/bookshelf.keystore
   AndroidKeyaliasName: flush
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
