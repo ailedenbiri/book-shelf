@@ -43,12 +43,6 @@ public class BookController : MonoBehaviour
     {
         if (GameManager.instance.state == GameManager.GameState.Playing)
         {
-            if (TutorialController.IsTutorialActive && selectedBook != null)
-            {
-                Debug.Log("RETURNED");
-
-                return;
-            }
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,22 +50,30 @@ public class BookController : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Book")))
                 {
-                    if (TutorialController.IsTutorialActive && hit.collider.gameObject.name != "OnboardingBook")
+                    if (MTutorialController.instance.IsTutorialActive() && hit.collider.gameObject.name != "OnboardingBook")
                     {
                         Debug.Log("RETURNED");
 
                         return;
                     }
-                    else if (TutorialController.IsTutorialActive && hit.collider.gameObject.name == "OnboardingBook" && selectedBook != null)
-                    {
-                        Debug.Log("RETURNED");
+                    //else if (TutorialController.IsTutorialActive && hit.collider.gameObject.name == "OnboardingBook" && selectedBook != null)
+                    //{
+                    //    Debug.Log("RETURNED");
 
-                        return;
-                    }
-                    else if (TutorialController.IsTutorialActive && hit.collider.gameObject.name == "OnboardingBook" && selectedBook == null)
+                    //    return;
+                    //}
+                    else if (SceneManager.GetActiveScene().name == "LEVEL - 1" && hit.collider.gameObject.name == "OnboardingBook" && selectedBook == null)
                     {
-                        TutorialLoader.instance.Load("0.2");
-                        DOVirtual.DelayedCall(3f, () => TutorialPopup.instance.OpenNextBtn());
+                        MTutorialController.instance.CloseTutorial("T-1");
+                        MTutorialController.instance.LoadTutorial("T-2", 0.3f, 6f, 0.6f);
+                        DOVirtual.DelayedCall(6.5f, () =>
+                        {
+                            foreach (var item in GameObject.FindObjectsOfType<ShelfGrid>())
+                            {
+                                item.GetComponent<BoxCollider>().enabled = true;
+                            }
+                            MTutorialController.instance.LoadTutorial("T-3", 0.3f, -1);
+                        });
                     }
                     if (hit.transform.TryGetComponent(out Book bookTransform))
                     {
@@ -136,7 +138,7 @@ public class BookController : MonoBehaviour
 
                         if (hit.transform.TryGetComponent<ShelfGrid>(out ShelfGrid g))
                         {
-                            if (g != currentSelectedGrid)
+                            if (g != currentSelectedGrid && g.isEmpty && g.shelf.GetPos(selectedBook.thickness, g) != Vector3.zero)
                             {
                                 Taptic.Light();
                             }
@@ -174,10 +176,8 @@ public class BookController : MonoBehaviour
                 {
                     if (selectedBook.name == "OnboardingBook")
                     {
-                        foreach (var item in GameObject.FindObjectsOfType<ShelfGrid>())
-                        {
-                            item.GetComponent<BoxCollider>().enabled = true;
-                        }
+                        MTutorialController.instance.CloseTutorial("T-3");
+
                     }
                     GameManager.instance.state = GameManager.GameState.Waiting;
                     DistanceCalculator d = currentSelectedGrid.shelf;
