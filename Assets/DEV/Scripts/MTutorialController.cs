@@ -11,6 +11,19 @@ public class MTutorialController : MonoBehaviour
         instance = this;
     }
 
+    private GameObject t1Hand;
+
+    private void Update()
+    {
+        if (t1Hand != null)
+        {
+            MeshRenderer r = GameObject.Find("OnboardingBook").GetComponent<MeshRenderer>();
+            Vector3 pos = r.bounds.center + Vector3.forward * -0.5f + Vector3.right * 0.12f + Vector3.up * -0.1f;
+            t1Hand.transform.position = pos;
+        }
+        
+    }
+
     public void LoadTutorial(string tutorialName, float openTime = 0.3f, float duration = 4f, float delay = 0f)
     {
         DOVirtual.DelayedCall(delay, () =>
@@ -22,6 +35,10 @@ public class MTutorialController : MonoBehaviour
                     Transform t = item;
                     Debug.Log(t.name + "Opened");
                     t.gameObject.SetActive(true);
+                    if (tutorialName == "T-1")
+                    {
+                        t1Hand = GameObject.Find("t1Hand");
+                    }
                     t.GetComponent<CanvasGroup>().DOFade(1f, openTime);
                     if (duration != -1)
                     {
