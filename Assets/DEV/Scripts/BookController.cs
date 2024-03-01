@@ -50,7 +50,7 @@ public class BookController : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Book")))
                 {
-                    if (MTutorialController.instance.IsTutorialActive() && hit.collider.gameObject.name != "OnboardingBook")
+                    if (SceneManager.GetActiveScene().name == "LEVEL - 1" && MTutorialController.instance.IsTutorialActive() && hit.collider.gameObject.name != "OnboardingBook")
                     {
                         Debug.Log("RETURNED");
 

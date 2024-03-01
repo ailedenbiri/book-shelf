@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7211836541925776796}
   - component: {fileID: 8697618637732753508}
   - component: {fileID: 7279338345189998761}
-  - component: {fileID: 1275401650591810249}
   - component: {fileID: 8615063285191763833}
   m_Layer: 0
   m_Name: raf4 (2)
@@ -27,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581370629052350587}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0.0097, y: 0.9976, z: 0.035}
   m_LocalScale: {x: 106.51993, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471817796419600024}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8697618637732753508
 MeshFilter:
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1275401650591810249
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581370629052350587}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.009999995, y: 0.08916322, z: 0.01}
-  m_Center: {x: 0, y: 0.03958161, z: -3.4381406e-10}
 --- !u!114 &8615063285191763833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +127,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828720230903696177}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 8.638939}
   m_LocalScale: {x: 2.359294, y: 2.359294, z: 2.359294}
@@ -161,6 +138,7 @@ Transform:
   - {fileID: 5239528546278458665}
   - {fileID: 5855404304826735445}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &3209777427390154099
 MeshFilter:
@@ -223,7 +201,6 @@ GameObject:
   - component: {fileID: 2181083546302619003}
   - component: {fileID: 9054938265563537636}
   - component: {fileID: 2801876007917893632}
-  - component: {fileID: 7883924356730767527}
   - component: {fileID: 5346174393017614007}
   m_Layer: 0
   m_Name: raf4 (5)
@@ -239,13 +216,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000326865209595615}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0.011, y: 0.146, z: 0.035}
   m_LocalScale: {x: 106.28129, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471817796419600024}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9054938265563537636
 MeshFilter:
@@ -297,27 +274,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7883924356730767527
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000326865209595615}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.009999995, y: 0.088217266, z: 0.01}
-  m_Center: {x: 0, y: 0.03910863, z: -3.4381406e-10}
 --- !u!114 &5346174393017614007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +303,6 @@ GameObject:
   - component: {fileID: 5239528546278458665}
   - component: {fileID: 2576377146878809928}
   - component: {fileID: 1996402831877402782}
-  - component: {fileID: 8954274117340725001}
   - component: {fileID: 1131852881013641562}
   m_Layer: 0
   m_Name: raf4 (3)
@@ -363,13 +318,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3407642355312175807}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0.011, y: 1.4294, z: 0.035}
   m_LocalScale: {x: 106.28129, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471817796419600024}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2576377146878809928
 MeshFilter:
@@ -421,27 +376,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8954274117340725001
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3407642355312175807}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.009999995, y: 0.088803805, z: 0.01}
-  m_Center: {x: 0, y: 0.03940189, z: -3.4381406e-10}
 --- !u!114 &1131852881013641562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +405,6 @@ GameObject:
   - component: {fileID: 2058092230810433852}
   - component: {fileID: 722925017019548528}
   - component: {fileID: 7215730063999189602}
-  - component: {fileID: 8305797645988051432}
   - component: {fileID: 457840986292159752}
   m_Layer: 0
   m_Name: raf4 (1)
@@ -487,13 +420,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3557558173748188967}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0.011, y: 0.5658, z: 0.035}
   m_LocalScale: {x: 106.28129, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471817796419600024}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &722925017019548528
 MeshFilter:
@@ -545,27 +478,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8305797645988051432
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557558173748188967}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.009999995, y: 0.088217266, z: 0.01}
-  m_Center: {x: 0, y: 0.03910863, z: -3.4381406e-10}
 --- !u!114 &457840986292159752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +507,6 @@ GameObject:
   - component: {fileID: 5855404304826735445}
   - component: {fileID: 7048626289249408393}
   - component: {fileID: 625450614968584566}
-  - component: {fileID: 3349704871995215374}
   - component: {fileID: 2133976812707105126}
   m_Layer: 0
   m_Name: raf4 (4)
@@ -611,13 +522,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7373597166464164916}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0.0122, y: 1.8612, z: 0.035}
   m_LocalScale: {x: 106.04265, y: 4.820189, z: 39.045727}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6471817796419600024}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7048626289249408393
 MeshFilter:
@@ -669,27 +580,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3349704871995215374
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7373597166464164916}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.009999995, y: 0.08687879, z: 0.01}
-  m_Center: {x: 0, y: 0.038439393, z: -3.4381406e-10}
 --- !u!114 &2133976812707105126
 MonoBehaviour:
   m_ObjectHideFlags: 0
